@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appartenirs;
+use App\Models\Configurations;
 use Illuminate\Http\Request;
 
-class AppartenirsController extends Controller
+class ConfigurationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AppartenirsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Appartenirs $appartenirs)
+    public function show(Configurations $configurations)
     {
         //
     }
@@ -42,7 +42,7 @@ class AppartenirsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Appartenirs $appartenirs)
+    public function edit(Configurations $configurations)
     {
         //
     }
@@ -50,7 +50,7 @@ class AppartenirsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Appartenirs $appartenirs)
+    public function update(Request $request, Configurations $configurations)
     {
         //
     }
@@ -58,7 +58,7 @@ class AppartenirsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Appartenirs $appartenirs)
+    public function destroy(Configurations $configurations)
     {
         //
     }

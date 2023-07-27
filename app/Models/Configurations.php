@@ -7,16 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Dotations extends Model
+class Configurations extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded=[];
-    public function Reserve():BelongsTo
+    public function Entreprise():BelongsTo
     {
-        return $this->belongsTo(Reserves::class,"reserves_id");
-    }
-    public function Agent():BelongsTo
-    {
-        return $this->belongsTo(Agents::class,"agents_id");
+       return $this->belongsTo(Users::class,'entreprises_id');
     }
 }

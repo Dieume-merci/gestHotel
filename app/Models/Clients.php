@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Categories extends Model
+class Clients extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded=[];
@@ -21,10 +21,14 @@ class Categories extends Model
         return $this->hasManyThrough(
             Dotations::class,
             Reserves::class,
-            'categories_id',
+            'clients_id',
             'reserves_id',
             'id',
             'id',
         );
+    }
+    public function AgentAappartenirClients():BelongsToMany
+    {
+        return $this->belongsToMany(Agents::class,'agent_appartenir_clients')->withPivot("id","created_at")->whereNull('agent_appartenir_clients.deleted_at');
     }
 }
