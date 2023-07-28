@@ -13,23 +13,23 @@ class Users extends Model
     use HasFactory,SoftDeletes;
     public function Domaines():HasMany
     {
-        return $this->hasMany(Domaines::class);
+        return $this->hasMany(Domaine::class);
     }
     public function Dotations():HasMany
     {
-        return $this->hasMany(Dotations::class);
+        return $this->hasMany(Dotation::class);
     }
     public function Reserves():HasMany
     {
-        return $this->hasMany(Reserves::class);
+        return $this->hasMany(Reserve::class);
     }
     public function Agents()
     {
         return $this->hasManyThrough(
-            Agents::class,
-            Domaines::class,
-            'users_id',
-            'domaines_id',
+            Agent::class,
+            Domaine::class,
+            'user_id',
+            'domaine_id',
             'id',
             'id',
         );

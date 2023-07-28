@@ -2,18 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
 use Livewire\Component;
+use App\Models\AgentAppartenirClient;
 
-class Users extends Component
+class AgentAppartenirClients extends Component
 {
     public  static function store($datas){
-        User::firstOrCreate($datas);
+        AgentAppartenirClient::firstOrCreate($datas);
     }
     public  static function update($datas){
         $datas->save();
      }
      public  static function destroy($datas){
-        User::destroy($datas);
+        AgentAppartenirClient::destroy($datas);
      }
 }

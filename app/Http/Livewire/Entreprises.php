@@ -3,11 +3,17 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Entreprise;
 
 class Entreprises extends Component
 {
-    public function render()
-    {
-        return view('livewire.entreprises');
+    public  static function store($datas){
+        Entreprise::firstOrCreate($datas);
     }
+    public  static function update($datas){
+        $datas->save();
+     }
+     public  static function destroy($datas){
+        Entreprise::destroy($datas);
+     }
 }
