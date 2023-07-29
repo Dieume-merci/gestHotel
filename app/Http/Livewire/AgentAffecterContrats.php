@@ -3,17 +3,17 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\AgentAppartenirClient;
+use App\Models\AgentAffecterContrat;
 
-class AgentAppartenirClients extends Component
+class AgentAffecterContrats extends Component
 {
     public  static function store($datas){
-        AgentAppartenirClient::firstOrCreate($datas);
+        AgentAffecterContrat::firstOrCreate($datas);
     }
     public  static function update($datas){
         $datas->save();
      }
      public  static function destroy($datas){
-        AgentAppartenirClient::destroy($datas);
+        AgentAffecterContrat::destroy($datas);
      }
 }

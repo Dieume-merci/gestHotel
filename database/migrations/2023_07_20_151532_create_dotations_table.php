@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('dotations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('agent_id')->constrained()->onDelete('cascade');
+            $table->foreignId('reserve_id')->constrained()->onDelete('cascade');
+            $table->integer('quantite');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

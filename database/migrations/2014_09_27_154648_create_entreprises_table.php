@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agent_appartenir_clients', function (Blueprint $table) {
+        Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
+            $table->string('designation',20);
+            $table->string('logo',50);
+            $table->string('contact',13);
+            $table->string('email',50);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agent_appartenir_clients');
+        Schema::dropIfExists('entreprises');
     }
 };

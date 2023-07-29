@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AgentAppartenirClient;
+use App\Models\contrat;
 use Illuminate\Http\Request;
 
-class AgentAppartenirClientController extends Controller
+class ContratController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AgentAppartenirClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AgentAppartenirClient $agentAppartenirClient)
+    public function show(contrat $contrat)
     {
         //
     }
@@ -42,7 +42,7 @@ class AgentAppartenirClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AgentAppartenirClient $agentAppartenirClient)
+    public function edit(contrat $contrat)
     {
         //
     }
@@ -50,15 +50,15 @@ class AgentAppartenirClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AgentAppartenirClient $agentAppartenirClient)
+    public function update(Request $request, contrat $contrat)
     {
         //
     }
 
     /**
- df    * Remove the specified resource from storage.
+     * Remove the specified resource from storage.
      */
-    public function destroy(AgentAppartenirClient $agentAppartenirClient)
+    public function destroy(contrat $contrat)
     {
         //
     }
