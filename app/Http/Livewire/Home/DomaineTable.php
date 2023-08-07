@@ -88,6 +88,10 @@ final class DomaineTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
+            ->addColumn('Ui',fn (Domaine $Domaine) => "<img src='https://eu.ui-avatars.com/api/?name=".$Domaine->designation."'>")
+            ->addColumn('designation', fn (Domaine $Domaine) => $Domaine->designation)
+            ->addColumn('nombre', fn (Domaine $Domaine) => count($Domaine->Agents)." Agent(s)")
+            ->addColumn('user', fn (Domaine $Domaine) => $Domaine->Users->nom.''.$Domaine->Users->postnom.''.$Domaine->Users->prenom)
             ->addColumn('created_at_formatted', fn (Domaine $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
@@ -109,7 +113,11 @@ final class DomaineTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Created at', 'created_at_formatted', 'created_at')
+            Column::make('UI', 'Ui'),
+            Column::make('Désignation', 'designation'),
+            Column::make('Enregisté Par', 'user'),
+            Column::make('Nombre Agent', 'nombre'),
+            Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')
                 ->sortable(),
 
         ];
