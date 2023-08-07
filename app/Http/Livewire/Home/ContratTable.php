@@ -90,10 +90,10 @@ final class ContratTable extends PowerGridComponent
             ->addColumn('Ui',fn (Contrat $Contrat) => "<img src='https://eu.ui-avatars.com/api/?name=".$Contrat->Clients->designation."'>")
             ->addColumn('id')
             ->addColumn('designation', fn (Contrat $Contrat) => $Contrat->Clients->designation)
-            ->addColumn('email', fn (Contrat $Contrat) => $Contrat->Clients->email)
+            ->addColumn('email', fn (Contrat $Contrat) => "<a href='mailto:".$Contrat->Clients->email."'>".$Contrat->Clients->email."<a/>")
             ->addColumn('date_debut', fn (Contrat $Contrat) => Carbon::parse($Contrat->date_debut)->format('d/m/Y à H:i:s'))
             ->addColumn('date_fin', fn (Contrat $Contrat) => Carbon::parse($Contrat->date_fin)->format('d/m/Y à H:i:s'))
-            ->addColumn('contact', fn (Contrat $Contrat) => $Contrat->contact)
+            ->addColumn('contact', fn (Contrat $Contrat) => "<a href='https://wa.me/".$Contrat->contact."'>".$Contrat->contact."<a/>")
             ->addColumn('close', fn (Contrat $Contrat) =>"<a href='".$Contrat->close."' target='_blank'>Voir</a>")
             ->addColumn('cout', fn (Contrat $Contrat) =>$Contrat->cout.' $')
             ->addColumn('created_at_formatted', fn (Contrat $Contrat) => Carbon::parse($Contrat->created_at)->format('d/m/Y à H:i:s'));

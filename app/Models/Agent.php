@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Agent extends Model
 {
@@ -25,6 +26,10 @@ class Agent extends Model
     public function AgentAffecterContrats():BelongsToMany
     {
         return $this->belongsToMany(Contrat::class,'agent_affecter_contrats')->withPivot("id","created_at")->whereNull('agent_affecter_contrats.deleted_at');
+    }
+    public function Convention():HasOne
+    {
+        return $this->hasOne(Convention::class);
     }
     
 }

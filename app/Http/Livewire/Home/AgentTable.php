@@ -88,7 +88,13 @@ final class AgentTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('created_at_formatted', fn (Agent $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('Ui',fn (Agent $Agent) => "<img src='https://eu.ui-avatars.com/api/?name=".$Agent->nom.''.$Agent->postnom."'>")
+            ->addColumn('nomcomplet', fn (Agent $Agent) => $Agent->nom.''.$Agent->postnom.''.$Agent->prenom)
+            ->addColumn('contact', fn (Agent $Agent) => "<a href='https://wa.me/".$Agent->contact."'>".$Agent->contact."<a/>")
+            ->addColumn('civilite', fn (Agent $Agent) => $Agent->civilite)
+            ->addColumn('email', fn (Agent $Agent) => "<a href='mailto:".$Agent->email."'>".$Agent->email."<a/>")
+            ->addColumn('date_debut', fn (Agent $Agent) => Carbon::parse($Agent->Convention->date_debut)->format('d/m/Y à H:i:s'))
+            ->addColumn('created_at_formatted', fn (Agent $Agent) => Carbon::parse($Agent->created_at)->format('d/m/Y à H:i:s'));
     }
 
     /*
@@ -108,8 +114,14 @@ final class AgentTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Created at', 'created_at_formatted', 'created_at')
+            Column::make('#', 'id'),
+            Column::make('UI', 'Ui'),
+            Column::make('Nom', 'nomcomplet'),
+            Column::make('Civilité', 'civilite'),
+            Column::make('E-mail', 'email'),
+            Column::make('Contact', 'contact'),
+            Column::make('Date De signature contrat', 'date_debut'),
+            Column::make('Date Enrezgistrement', 'created_at_formatted', 'created_at')
                 ->sortable(),
 
         ];
@@ -147,14 +159,14 @@ final class AgentTable extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('agent.edit', function(\App\Models\Agent $model) {
-                    return $model->id;
+               ->route('agent.edit', function(\App\Models\Agent $Agent) {
+                    return $Agent->id;
                }),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('agent.destroy', function(\App\Models\Agent $model) {
-                    return $model->id;
+               ->route('agent.destroy', function(\App\Models\Agent $Agent) {
+                    return $Agent->id;
                })
                ->method('delete')
         ];
