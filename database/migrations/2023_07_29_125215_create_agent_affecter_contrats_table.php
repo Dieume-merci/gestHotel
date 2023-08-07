@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('agent_id')->constrained()->onDelete('cascade');
             $table->foreignId('contrat_id')->constrained()->onDelete('cascade');
+            $table->string("convention")->default("/template/files/personals/documents/__document.png");
             $table->timestamps();
             $table->softDeletes();
         });

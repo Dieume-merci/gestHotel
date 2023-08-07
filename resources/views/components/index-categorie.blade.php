@@ -1,5 +1,5 @@
 @extends('layouts.global-layouts')
 
 @section('contenu')
-<livewire:home.index-categorie>
+<livewire:home.categorie-table>
 @endsection

@@ -20,7 +20,7 @@ class Contrat extends Model
     {
         return $this->belongsTo(Client::class,"client_id");
     }
-    public function AgentAffecterContrats():BelongsToMany
+    public function Agents():BelongsToMany
     {
         return $this->belongsToMany(Agent::class,'agent_affecter_contrats')->withPivot("id","created_at")->whereNull('agent_affecter_contrats.deleted_at');
     }

@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('domaine_id')->constrained()->onDelete('cascade');
-            $table->string('nom',20);
-            $table->string('postnom',20);
-            $table->string('prenom',20)->nullable();
-            $table->string('civilite',8);
-            $table->string('document',50);
-            $table->string('photo',50);
-            $table->string('contact',13);
-            $table->string('email',50);
+            $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
+            $table->string('nom');
+            $table->string('postnom');
+            $table->string('prenom')->nullable();
+            $table->string('civilite');
+            $table->string('document')->default("/template/files/personals/documents/__document.pdf");
+            $table->string('image')->default("/template/files/personals/images/__avatar.png");
+            $table->string('contact');
+            $table->string('email');
             $table->timestamps();
             $table->softDeletes();
         });

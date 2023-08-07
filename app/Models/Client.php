@@ -15,6 +15,10 @@ class Client extends Model
     {
         return $this->hasMany(Reserve::class);
     }
+    public function Contrants():HasMany
+    {
+        return $this->hasMany(Client::class,"client_id");
+    }
     public function Dotations()
     {
         return $this->hasManyThrough(

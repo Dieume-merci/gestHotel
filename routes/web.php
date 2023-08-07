@@ -3,11 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
+    'middleware'=>'App\Http\middleware\Authenticate',
     'prefix' => 'WICOM',
+
 ], function(){
     Route::resources([
         'Agents'=>AgentController::class,
@@ -15,7 +17,6 @@ Route::group([
         'Entreprises'=>EntrepriseController::class,
         'Reserces'=>ReserveController::class,
         'Categories'=>CategorieController::class,
-        'Configurations'=>ConfigurationController::class,
         'Domaines'=>DomaineController::class,
         'Dotations'=>DotationController::class,
         'Users'=>UserController::class,

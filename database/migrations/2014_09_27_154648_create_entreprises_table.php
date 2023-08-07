@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
-            $table->string('designation',20);
-            $table->string('logo',50);
-            $table->string('contact',13);
-            $table->string('email',50);
+            $table->string('designation');
+            $table->string('logo')->default("/template/files/company/logo/__company.png");
+            $table->string('contact');
+            $table->string('email');
+            $table->string('sigle');
+            $table->string('griffe')->default("/template/files/company/griffe/__company.png");
             $table->timestamps();
             $table->softDeletes();
         });

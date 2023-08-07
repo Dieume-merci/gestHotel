@@ -1,5 +1,5 @@
 @extends('layouts.global-layouts')
 
 @section('contenu')
-<livewire:home.index-client>
+<livewire:home.contrat-table>
 @endsection

@@ -22,9 +22,9 @@ class Agent extends Model
     {
         return $this->hasMany(Dotation::class);
     }
-    public function AgentAppartenirClients():BelongsToMany
+    public function AgentAffecterContrats():BelongsToMany
     {
-        return $this->belongsToMany(Client::class,'agent_appartenir_clients')->withPivot("id","created_at")->whereNull('agent_appartenir_clients.deleted_at');
+        return $this->belongsToMany(Contrat::class,'agent_affecter_contrats')->withPivot("id","created_at")->whereNull('agent_affecter_contrats.deleted_at');
     }
     
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// use App\Models\AgentAffecterContrat;
+// use App\Models\Dotation;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
 
@@ -12,6 +14,8 @@ class EntrepriseController extends Controller
      */
     public function index()
     {
+        // AgentAffecterContrat::factory()->count(9)->create();  
+        // Dotation::factory()->count(5)->create(); 
         return view("components.index-entreprise");
     }
 

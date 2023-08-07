@@ -1,5 +1,5 @@
 @extends('layouts.global-layouts')
 
 @section('contenu')
-<livewire:home.index-user>
+<livewire:home.user-table>
 @endsection

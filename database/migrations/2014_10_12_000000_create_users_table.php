@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->string('nom');
+            $table->string('postnom');
+            $table->string('prenom');
+            $table->string('image')->default("/template/files/personals/images/__avatar.png");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

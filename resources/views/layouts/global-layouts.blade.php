@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>WICOM-SA</title>
+    <title>{{Auth::user()->Entreprises->sigle}}</title>
     <link rel="stylesheet" href="{!! url('template/vendors/typicons.font/font/typicons.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/style.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/sweetalert.css') !!}">
-    <link rel="shortcut icon" href="{!! url('template/images/favicon.png') !!}">
+    <link rel="shortcut icon" href="{{Auth::user()->Entreprises->logo}}">
     @livewireStyles
   </head>
   <body>
@@ -24,11 +24,9 @@
     <script src="{!! url('template/js/alerts.js') !!}"></script>
     <script src="{!! url('template/js/template.js') !!}"></script>
     <script src="{!! url('template/js/cdn.min.js') !!}"></script>
+    <script src="{!! url('template/js/swetalert-modal.js') !!}"></script>
     <script src="{!! url('template/js/todolist.js') !!}"></script>
     <script src="{!! url('template/js/dashboard.js') !!}"></script>
-    <script>
-      // swal("Good job!", "Vueiller me desactiver !", "success");
-    </script>
   </body>
   @show
 </html>
