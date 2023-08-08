@@ -15,7 +15,7 @@ class Client extends Model
     {
         return $this->hasMany(Reserve::class);
     }
-    public function Contrants():HasMany
+    public function Contrats():HasMany
     {
         return $this->hasMany(Client::class,"client_id");
     }

@@ -121,7 +121,7 @@ final class AgentTable extends PowerGridComponent
             Column::make('E-mail', 'email'),
             Column::make('Contact', 'contact'),
             Column::make('Date De signature contrat', 'date_debut'),
-            Column::make('Date Enrezgistrement', 'created_at_formatted', 'created_at')
+            Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')
                 ->sortable(),
 
         ];

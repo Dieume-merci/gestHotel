@@ -92,7 +92,7 @@ final class DomaineTable extends PowerGridComponent
             ->addColumn('designation', fn (Domaine $Domaine) => $Domaine->designation)
             ->addColumn('nombre', fn (Domaine $Domaine) => count($Domaine->Agents)." Agent(s)")
             ->addColumn('user', fn (Domaine $Domaine) => $Domaine->Users->nom.''.$Domaine->Users->postnom.''.$Domaine->Users->prenom)
-            ->addColumn('created_at_formatted', fn (Domaine $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Domaine $Domaine) => Carbon::parse($Domaine->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -155,14 +155,14 @@ final class DomaineTable extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('domaine.edit', function(\App\Models\Domaine $model) {
-                    return $model->id;
+               ->route('domaine.edit', function(\App\Models\Domaine $Domaine) {
+                    return $Domaine->id;
                }),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('domaine.destroy', function(\App\Models\Domaine $model) {
-                    return $model->id;
+               ->route('domaine.destroy', function(\App\Models\Domaine $Domaine) {
+                    return $Domaine->id;
                })
                ->method('delete')
         ];

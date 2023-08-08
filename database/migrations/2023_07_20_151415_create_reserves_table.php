@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('reserves', function (Blueprint $table) {
             $table->id();
             $table->foreignId('categorie_id')->constrained()->onDelete('cascade');
-            $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->integer('quantite');
+            $table->integer('quantite_totale');
+            $table->integer('quantite_totale_generale');
             $table->timestamps();
             $table->softDeletes();
         });
