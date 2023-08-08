@@ -91,7 +91,7 @@ final class ReserveTable extends PowerGridComponent
             ->addColumn('Ui',fn (Reserve $Reserve) => "<img src='https://eu.ui-avatars.com/api/?name=".$Reserve->Categories->designation."'>")
             ->addColumn('designation', fn (Reserve $Reserve) => $Reserve->Categories->designation)
             ->addColumn('origine', fn (Reserve $Reserve) => $Reserve->Clients->designation)
-            ->addColumn('quantite', fn (Reserve $Reserve) => $Reserve->quantite)
+            ->addColumn('quantite', fn (Reserve $Reserve) => $Reserve->quantite.' '.$Reserve->Categories->unite)
             ->addColumn('created_at_formatted', fn (Reserve $Reserve) => Carbon::parse($Reserve->created_at)->format('d/m/Y à H:i:s'));
     }
 

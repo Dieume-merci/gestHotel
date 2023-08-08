@@ -91,9 +91,9 @@ final class CategorieTable extends PowerGridComponent
             ->addColumn('Ui',fn (Categorie $Categorie) => "<img src='https://eu.ui-avatars.com/api/?name=".$Categorie->designation."'>")
             ->addColumn('designation', fn (Categorie $Categorie) => $Categorie->designation)
             ->addColumn('origine', fn (Categorie $Categorie) => $Categorie->Reserves->last()->Clients->designation)
-            ->addColumn('quantite', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite)
-            ->addColumn('quantitetotale', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite_totale)
-            ->addColumn('quantitetotalegenerale', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite_totale_generale)
+            ->addColumn('quantite', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite.' '.$Categorie->unite)
+            ->addColumn('quantitetotale', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite_totale.' '.$Categorie->unite)
+            ->addColumn('quantitetotalegenerale', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite_totale_generale.' '.$Categorie->unite)
             ->addColumn('created_at_formatted', fn (Categorie $Categorie) => Carbon::parse($Categorie->created_at)->format('d/m/Y H:i:s'));
     }
 

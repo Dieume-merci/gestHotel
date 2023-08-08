@@ -23,4 +23,8 @@ class Entreprise extends Model
     {
        return $this->hasMany(Agent::class);
     }
+    public function Categories():HasMany
+    {
+       return $this->hasMany(Categorie::class);
+    }
 }

@@ -18,6 +18,7 @@ class CategorieFactory extends Factory
     {
         return [
             "designation"=>$this->faker->streetName,
+            "unite"=>$this->faker->countryCode,
         ];
     }
 }

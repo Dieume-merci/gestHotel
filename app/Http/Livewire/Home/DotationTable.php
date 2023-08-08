@@ -88,7 +88,10 @@ final class DotationTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('created_at_formatted', fn (Dotation $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('designation', fn (Dotation $dotation) => $dotation->Reserves->Categories->designation)
+            ->addColumn('quantite', fn (Dotation $dotation) => $dotation->quantite.' '.$dotation->Reserves->Categories->unite)
+            ->addColumn('ui', fn (Dotation $dotation) =>"<img src='https://eu.ui-avatars.com/api/?name=".$dotation->Reserves->Categories->designation."'>")
+            ->addColumn('created_at_formatted', fn (Dotation $dotation) => Carbon::parse($dotation->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -109,6 +112,9 @@ final class DotationTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
+            Column::make('UI', 'ui'),
+            Column::make('Désignation', 'designation'),
+            Column::make('Quantité', 'quantite'),
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),
 
@@ -147,14 +153,14 @@ final class DotationTable extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('dotation.edit', function(\App\Models\Dotation $model) {
-                    return $model->id;
+               ->route('dotation.edit', function(\App\Models\Dotation $dotation) {
+                    return $dotation->id;
                }),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('dotation.destroy', function(\App\Models\Dotation $model) {
-                    return $model->id;
+               ->route('dotation.destroy', function(\App\Models\Dotation $dotation) {
+                    return $dotation->id;
                })
                ->method('delete')
         ];
