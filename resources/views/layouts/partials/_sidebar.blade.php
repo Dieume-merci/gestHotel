@@ -99,7 +99,7 @@
         </a>
         <div class="collapse" id="reserve">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Reserces.index")}}">{{__("Entrées")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("Reserves.index")}}">{{__("Entrées")}}</a></li>
           </ul>
         </div>
       </li>

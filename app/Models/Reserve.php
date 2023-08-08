@@ -20,4 +20,8 @@ class Reserve extends Model
     {
         return $this->belongsTo(Client::class,"client_id");
     }
+    public function Categories():BelongsTo
+    {
+        return $this->belongsTo(Categorie::class,"categorie_id");
+    }
 }

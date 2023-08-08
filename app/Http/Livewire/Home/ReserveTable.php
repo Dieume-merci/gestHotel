@@ -88,7 +88,11 @@ final class ReserveTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('created_at_formatted', fn (Reserve $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('Ui',fn (Reserve $Reserve) => "<img src='https://eu.ui-avatars.com/api/?name=".$Reserve->Categories->designation."'>")
+            ->addColumn('designation', fn (Reserve $Reserve) => $Reserve->Categories->designation)
+            ->addColumn('origine', fn (Reserve $Reserve) => $Reserve->Clients->designation)
+            ->addColumn('quantite', fn (Reserve $Reserve) => $Reserve->quantite)
+            ->addColumn('created_at_formatted', fn (Reserve $Reserve) => Carbon::parse($Reserve->created_at)->format('d/m/Y à H:i:s'));
     }
 
     /*
@@ -109,7 +113,11 @@ final class ReserveTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Created at', 'created_at_formatted', 'created_at')
+            Column::make('UI', 'Ui'),
+            Column::make('Désignation', 'designation'),
+            Column::make('Quantité', 'quantite'),
+            Column::make('Origine', 'origine'),
+            Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')
                 ->sortable(),
 
         ];
@@ -147,14 +155,14 @@ final class ReserveTable extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('reserve.edit', function(\App\Models\Reserve $model) {
-                    return $model->id;
+               ->route('reserve.edit', function(\App\Models\Reserve $Reserve) {
+                    return $Reserve->id;
                }),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('reserve.destroy', function(\App\Models\Reserve $model) {
-                    return $model->id;
+               ->route('reserve.destroy', function(\App\Models\Reserve $Reserve) {
+                    return $Reserve->id;
                })
                ->method('delete')
         ];

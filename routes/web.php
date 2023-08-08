@@ -15,7 +15,7 @@ Route::group([
         'Agents'=>AgentController::class,
         'Clients'=>ClientController::class,
         'Entreprises'=>EntrepriseController::class,
-        'Reserces'=>ReserveController::class,
+        'Reserves'=>ReserveController::class,
         'Categories'=>CategorieController::class,
         'Domaines'=>DomaineController::class,
         'Dotations'=>DotationController::class,
