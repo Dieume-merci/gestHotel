@@ -19,7 +19,7 @@
         <p class="sidebar-menu-title">{{__("Dashboard")}}</p>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ url("WICOM/Home")}}">
           <i class="typcn typcn-device-desktop menu-icon"></i>
           <span class="menu-title">{{__("Dashboard")}} <span class="badge badge-primary ml-3">{{Auth::user()->Entreprises->sigle}}</span></span>
         </a>
@@ -33,7 +33,7 @@
         </a>
         <div class="collapse" id="Agents">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ route("Agents.index")}}">{{__("Agents")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route("agent.index")}}">{{__("Agents")}}</a></li>
           </ul>
         </div>
       </li>
@@ -46,7 +46,7 @@
         </a>
         <div class="collapse" id="Entreprises">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Entreprises.index")}}">{{__("Entreprise")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("entreprise.index")}}">{{__("Entreprise")}}</a></li>
           </ul>
         </div>
       </li>
@@ -60,7 +60,7 @@
         </a>
         <div class="collapse" id="Clients">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Clients.index")}}">{{__('Clients')}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("client.index")}}">{{__('Clients')}}</a></li>
           </ul>
         </div>
       </li>
@@ -73,7 +73,7 @@
         </a>
         <div class="collapse" id="domaines">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Domaines.index")}}">{{__("Domaines")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("domaine.index")}}">{{__("Domaines")}}</a></li>
           </ul>
         </div>
       </li>
@@ -86,7 +86,7 @@
         </a>
         <div class="collapse" id="Categories">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Categories.index")}}">{{__("Categorie")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("categorie.index")}}">{{__("Categorie")}}</a></li>
           </ul>
         </div>
       </li>
@@ -99,7 +99,7 @@
         </a>
         <div class="collapse" id="reserve">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Reserves.index")}}">{{__("Entrées")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("reserve.index")}}">{{__("Entrées")}}</a></li>
           </ul>
         </div>
       </li>
@@ -112,7 +112,7 @@
         </a>
         <div class="collapse" id="sortie">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("Dotations.index")}}">{{__("Sorties")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("dotation.index")}}">{{__("Sorties")}}</a></li>
           </ul>
         </div>
       </li>

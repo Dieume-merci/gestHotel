@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('postnom');
             $table->string('prenom')->nullable();
             $table->string('civilite');
-            $table->string('document')->default("/template/files/personals/documents/__document.pdf");
+            $table->string('document')->default("/template/files/personals/documents/__document.png");
             $table->string('image')->default("/template/files/personals/images/__avatar.png");
             $table->string('contact');
             $table->string('email');
+            $table->string('fonction');
             $table->timestamps();
             $table->softDeletes();
         });

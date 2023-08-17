@@ -1,5 +1,5 @@
 window.addEventListener('success',event => {
-    $('#add_information').modal('hide');
+    $('#'+ event.detail.modal).modal('hide');
     var message="L'operation a Reussi";
     if (event.detail.message) {
         message=event.detail.message;
@@ -13,11 +13,8 @@ window.addEventListener('erreur',event => {
     }
     swal("Erreur",message , "error");
 });
-window.addEventListener('Edit-accouchement',event => {
-    $('#edit_information_accouchement').modal('show');
-});
-window.addEventListener('name-updated',event => {
-    $('#add_information').modal('show');
+window.addEventListener('openModal',event => {
+    $('#'+ event.detail.modal).modal('show');
 });
 function logout(){
       swal({

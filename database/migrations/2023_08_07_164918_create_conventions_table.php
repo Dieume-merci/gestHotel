@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date("date_debut");
             $table->date("date_fin");
             $table->float("salaire");
-            $table->string("close")->default("/template/files/personals/documents/__document.png");
+            $table->string("close")->default("/template/files/personals/documents/__close.png");
             $table->timestamps();
             $table->softDeletes();
         });

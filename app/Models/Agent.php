@@ -31,5 +31,9 @@ class Agent extends Model
     {
         return $this->hasOne(Convention::class);
     }
+    public function AgentAffecterContrat():HasOne
+    {
+        return $this->hasOne(AgentAffecterContrat::class);
+    }
     
 }

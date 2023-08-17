@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Controllers;
 
-use App\Models\User;
 use Livewire\Component;
+use App\Models\Dotation;
 
-class Users extends Component
+class Dotations extends Component
 {
     public  static function store($datas){
-        User::firstOrCreate($datas);
+        Dotation::firstOrCreate($datas);
     }
     public  static function update($datas){
         $datas->save();
      }
      public  static function destroy($datas){
-        User::destroy($datas);
+        Dotation::destroy($datas);
      }
 }

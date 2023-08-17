@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Controllers;
 
-use App\Models\Reserve;
+use App\Models\User;
 use Livewire\Component;
 
-class Reserves extends Component
+class Users extends Component
 {
     public  static function store($datas){
-        Reserve::firstOrCreate($datas);
+        User::firstOrCreate($datas);
     }
     public  static function update($datas){
         $datas->save();
      }
      public  static function destroy($datas){
-        Reserve::destroy($datas);
+        User::destroy($datas);
      }
 }

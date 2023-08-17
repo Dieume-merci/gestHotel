@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Controllers;
 
-use App\Models\Domaine;
+use App\Models\Contrat;
 use Livewire\Component;
 
-class Domaines extends Component
+class Contrats extends Component
 {
     public  static function store($datas){
-        Domaine::firstOrCreate($datas);
+        Contrat::firstOrCreate($datas);
     }
     public  static function update($datas){
         $datas->save();
      }
      public  static function destroy($datas){
-        Domaine::destroy($datas);
+        Contrat::destroy($datas);
      }
 }

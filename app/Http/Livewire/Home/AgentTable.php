@@ -88,12 +88,13 @@ final class AgentTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('Ui',fn (Agent $Agent) => "<img src='https://eu.ui-avatars.com/api/?name=".$Agent->nom.''.$Agent->postnom."'>")
-            ->addColumn('nomcomplet', fn (Agent $Agent) => $Agent->nom.''.$Agent->postnom.''.$Agent->prenom)
-            ->addColumn('contact', fn (Agent $Agent) => "<a href='https://wa.me/".$Agent->contact."'>".$Agent->contact."<a/>")
+            ->addColumn('Ui',fn (Agent $Agent) => "<img src='https://eu.ui-avatars.com/api/?name=".$Agent->nom.' '.$Agent->postnom."'>")
+            ->addColumn('nomcomplet', fn (Agent $Agent) => $Agent->nom.' '.$Agent->postnom.' '.$Agent->prenom)
+            ->addColumn('contact', fn (Agent $Agent) => "<a href='https://wa.me/".$Agent->contact."' target='_blank'>".$Agent->contact."<a/>")
             ->addColumn('civilite', fn (Agent $Agent) => $Agent->civilite)
-            ->addColumn('email', fn (Agent $Agent) => "<a href='mailto:".$Agent->email."'>".$Agent->email."<a/>")
-            ->addColumn('date_debut', fn (Agent $Agent) => Carbon::parse($Agent->Convention->date_debut)->format('d/m/Y à H:i:s'))
+            ->addColumn('email', fn (Agent $Agent) => "<a href='mailto:".$Agent->email."' target='_blank'>".$Agent->email."<a/>")
+            ->addColumn('fonction', fn (Agent $Agent) =>$Agent->fonction)
+            ->addColumn('date_debut', fn (Agent $Agent) => $retVal = (!empty($Agent->Convention)) ? Carbon::parse($Agent->Convention->date_debut)->format('d/m/Y à H:i:s') : "<span class='alert alert-danger'>Le contrat Non definit</span>")
             ->addColumn('created_at_formatted', fn (Agent $Agent) => Carbon::parse($Agent->created_at)->format('d/m/Y à H:i:s'));
     }
 
@@ -120,6 +121,7 @@ final class AgentTable extends PowerGridComponent
             Column::make('Civilité', 'civilite'),
             Column::make('E-mail', 'email'),
             Column::make('Contact', 'contact'),
+            Column::make('Fonction', 'fonction'),
             Column::make('Date De signature contrat', 'date_debut'),
             Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')
                 ->sortable(),
@@ -153,25 +155,20 @@ final class AgentTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+   
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('agent.edit', function(\App\Models\Agent $Agent) {
-                    return $Agent->id;
-               }),
+           Button::make('edit', 'Modifier')
+               ->class('btn btn-outline-warning btn-rounded mdi mdi-lead-pencil btn-sm')
+               ->emit("Agent",['id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('agent.destroy', function(\App\Models\Agent $Agent) {
-                    return $Agent->id;
-               })
-               ->method('delete')
+           Button::make('view', 'Voir')
+               ->class('btn btn-outline-success mdi mdi-eye btn-sm btn-rounded')
+               ->emit("AgentView",['id']),
         ];
     }
-    */
+   
 
     /*
     |--------------------------------------------------------------------------

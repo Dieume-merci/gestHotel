@@ -11,14 +11,17 @@ Route::group([
     'prefix' => 'WICOM',
 
 ], function(){
+    Route::get('Home', function () {
+    return view('home');
+    });
     Route::resources([
-        'Agents'=>AgentController::class,
-        'Clients'=>ClientController::class,
-        'Entreprises'=>EntrepriseController::class,
-        'Reserves'=>ReserveController::class,
-        'Categories'=>CategorieController::class,
-        'Domaines'=>DomaineController::class,
-        'Dotations'=>DotationController::class,
-        'Users'=>UserController::class,
+        'agent'=>AgentController::class,
+        'client'=>ClientController::class,
+        'entreprise'=>EntrepriseController::class,
+        'reserve'=>ReserveController::class,
+        'categorie'=>CategorieController::class,
+        'domaine'=>DomaineController::class,
+        'dotation'=>DotationController::class,
+        'user'=>UserController::class,
     ]);
 });

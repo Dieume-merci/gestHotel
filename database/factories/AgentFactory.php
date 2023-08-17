@@ -26,6 +26,7 @@ class AgentFactory extends Factory
             "prenom"=>$this->faker->userName,
             "civilite"=>$this->faker->word,
             "contact"=>$this->faker->e164PhoneNumber(),
+            "fonction"=>$this->faker->jobTitle(),
             "email"=>$this->faker->safeEmail,
         ];
     }

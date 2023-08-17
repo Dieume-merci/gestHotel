@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Controllers;
 
-use App\Models\Client;
 use Livewire\Component;
+use App\Models\Categorie;
 
-class Clients extends Component
+class Categories extends Component
 {
     public  static function store($datas){
-        Client::firstOrCreate($datas);
+        Categorie::firstOrCreate($datas);
     }
     public  static function update($datas){
         $datas->save();
      }
      public  static function destroy($datas){
-        Client::destroy($datas);
+        Categorie::destroy($datas);
      }
 }

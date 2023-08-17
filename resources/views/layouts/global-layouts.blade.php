@@ -6,6 +6,7 @@
     <title>{{Auth::user()->Entreprises->sigle}}</title>
     <link rel="stylesheet" href="{!! url('template/vendors/typicons.font/font/typicons.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/style.css') !!}">
+    <link rel="stylesheet" href="{!! url('template/vendors/mdi/css/materialdesignicons.min.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/sweetalert.css') !!}">
     <link rel="shortcut icon" href="{{Auth::user()->Entreprises->logo}}">
     @livewireStyles

@@ -27,4 +27,15 @@ class Entreprise extends Model
     {
        return $this->hasMany(Categorie::class);
     }
+    public function Domaines()
+    {
+        return $this->hasManyThrough(
+            Domaine::class,
+            User::class,
+            'entreprise_id',
+            'user_id',
+            'id',
+            'id',
+        );
+    }
 }
