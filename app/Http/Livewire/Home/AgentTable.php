@@ -88,7 +88,7 @@ final class AgentTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('Ui',fn (Agent $Agent) => "<img src='https://eu.ui-avatars.com/api/?name=".$Agent->nom.' '.$Agent->postnom."'>")
+            ->addColumn('Ui',fn (Agent $Agent) => "<img src='https://eu.ui-avatars.com/api/?name=".$Agent->nom.' '.$Agent->postnom."&background=random&color=fff&rounded=true&bold=true'>")
             ->addColumn('nomcomplet', fn (Agent $Agent) => $Agent->nom.' '.$Agent->postnom.' '.$Agent->prenom)
             ->addColumn('contact', fn (Agent $Agent) => "<a href='https://wa.me/".$Agent->contact."' target='_blank'>".$Agent->contact."<a/>")
             ->addColumn('civilite', fn (Agent $Agent) => $Agent->civilite)

@@ -87,11 +87,12 @@ final class ContratTable extends PowerGridComponent
     public function addColumns(): PowerGridColumns
     {
         return PowerGrid::columns()
-            ->addColumn('Ui',fn (Contrat $Contrat) => "<img src='https://eu.ui-avatars.com/api/?name=".$Contrat->Clients->designation."'>")
+            ->addColumn('Ui',fn (Contrat $Contrat) => "<img src='https://eu.ui-avatars.com/api/?name=".$Contrat->Clients->designation."&background=random&color=fff&rounded=true&bold=true'>")
             ->addColumn('id')
             ->addColumn('designation', fn (Contrat $Contrat) => $Contrat->Clients->designation)
             ->addColumn('email', fn (Contrat $Contrat) => "<a href='mailto:".$Contrat->Clients->email."'>".$Contrat->Clients->email."<a/>")
             ->addColumn('date_debut', fn (Contrat $Contrat) => Carbon::parse($Contrat->date_debut)->format('d/m/Y à H:i:s'))
+            ->addColumn('contexte', fn (Contrat $Contrat) => $Contrat->contexte)
             ->addColumn('date_fin', fn (Contrat $Contrat) => Carbon::parse($Contrat->date_fin)->format('d/m/Y à H:i:s'))
             ->addColumn('contact', fn (Contrat $Contrat) => "<a href='https://wa.me/".$Contrat->contact."'>".$Contrat->contact."<a/>")
             ->addColumn('close', fn (Contrat $Contrat) =>"<a href='".$Contrat->close."' target='_blank'>Voir</a>")
@@ -121,6 +122,7 @@ final class ContratTable extends PowerGridComponent
             Column::make('Designation', 'designation'),
             Column::make('Email', 'email'),
             Column::make('Cout', 'cout'),
+            Column::make('Contexte', 'contexte'),
             Column::make('Contrat', 'close'),
             Column::make('Date Debut Contrat', 'date_debut', 'date_debut'),
             Column::make('Date Fin Contrat', 'date_fin', 'date_fin'),
@@ -156,25 +158,19 @@ final class ContratTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+   
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('contrat.edit', function(\App\Models\Contrat $Contrat) {
-                    return $Contrat->id;
-               }),
-
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('contrat.destroy', function(\App\Models\Contrat $Contrat) {
-                    return $Contrat->id;
-               })
-               ->method('delete')
-        ];
+        return [
+            Button::make('edit', 'Modifier')
+                ->class('btn btn-outline-warning btn-rounded mdi mdi-lead-pencil btn-sm')
+                ->emit("client",['id']),
+ 
+            Button::make('view', 'Voir')
+                ->class('btn btn-outline-success mdi mdi-eye btn-sm btn-rounded')
+                ->emit("clientView",['id']),
+         ];
     }
-    */
 
     /*
     |--------------------------------------------------------------------------

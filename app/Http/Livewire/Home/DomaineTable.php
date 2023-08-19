@@ -88,7 +88,7 @@ final class DomaineTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('Ui',fn (Domaine $Domaine) => "<img src='https://eu.ui-avatars.com/api/?name=".$Domaine->designation."'>")
+            ->addColumn('Ui',fn (Domaine $Domaine) => "<img src='https://eu.ui-avatars.com/api/?name=".$Domaine->designation."&background=random&color=fff&rounded=true&bold=true'>")
             ->addColumn('designation', fn (Domaine $Domaine) => $Domaine->designation)
             ->addColumn('nombre', fn (Domaine $Domaine) => count($Domaine->Agents)." Agent(s)")
             ->addColumn('user', fn (Domaine $Domaine) => $Domaine->Users->nom.''.$Domaine->Users->postnom.''.$Domaine->Users->prenom)

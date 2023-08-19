@@ -90,7 +90,7 @@ final class DotationTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('designation', fn (Dotation $dotation) => $dotation->Reserves->Categories->designation)
             ->addColumn('quantite', fn (Dotation $dotation) => $dotation->quantite.' '.$dotation->Reserves->Categories->unite)
-            ->addColumn('ui', fn (Dotation $dotation) =>"<img src='https://eu.ui-avatars.com/api/?name=".$dotation->Reserves->Categories->designation."'>")
+            ->addColumn('ui', fn (Dotation $dotation) =>"<img src='https://eu.ui-avatars.com/api/?name=".$dotation->Reserves->Categories->designation."&background=random&color=fff&rounded=true&bold=true'>")
             ->addColumn('created_at_formatted', fn (Dotation $dotation) => Carbon::parse($dotation->created_at)->format('d/m/Y H:i:s'));
     }
 

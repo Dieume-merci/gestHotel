@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\contrat>
  */
-class contratFactory extends Factory
+class ContratFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -22,6 +22,7 @@ class contratFactory extends Factory
             "client_id"=>Client::factory(),
             "entreprise_id"=>Entreprise::factory(),
             "cout"=>$this->faker->randomDigit(),
+            "contexte"=>$this->faker->randomElement,
             "date_debut"=>$this->faker->date,
             "date_fin"=>$this->faker->date()
         ];

@@ -88,7 +88,7 @@ final class ReserveTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('Ui',fn (Reserve $Reserve) => "<img src='https://eu.ui-avatars.com/api/?name=".$Reserve->Categories->designation."'>")
+            ->addColumn('Ui',fn (Reserve $Reserve) => "<img src='https://eu.ui-avatars.com/api/?name=".$Reserve->Categories->designation."&background=random&color=fff&rounded=true&bold=true'>")
             ->addColumn('designation', fn (Reserve $Reserve) => $Reserve->Categories->designation)
             ->addColumn('origine', fn (Reserve $Reserve) => $Reserve->Clients->designation)
             ->addColumn('quantite', fn (Reserve $Reserve) => $Reserve->quantite.' '.$Reserve->Categories->unite)

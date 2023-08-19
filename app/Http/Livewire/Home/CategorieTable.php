@@ -88,7 +88,7 @@ final class CategorieTable extends PowerGridComponent
     {
         return PowerGrid::columns()
             ->addColumn('id')
-            ->addColumn('Ui',fn (Categorie $Categorie) => "<img src='https://eu.ui-avatars.com/api/?name=".$Categorie->designation."'>")
+            ->addColumn('Ui',fn (Categorie $Categorie) => "<img src='https://eu.ui-avatars.com/api/?name=".$Categorie->designation."&background=random&color=fff&rounded=true&bold=true'>")
             ->addColumn('designation', fn (Categorie $Categorie) => $Categorie->designation)
             ->addColumn('origine', fn (Categorie $Categorie) => $Categorie->Reserves->last()->Clients->designation)
             ->addColumn('quantite', fn (Categorie $Categorie) => $Categorie->Reserves->last()->quantite.' '.$Categorie->unite)

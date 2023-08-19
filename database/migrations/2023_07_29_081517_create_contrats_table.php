@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->foreignId('entreprise_id')->constrained()->onDelete('cascade');
             $table->integer("cout");
+            $table->integer("contexte");
             $table->string("close")->default("/template/files/company/closes/__document.png");
             $table->date("date_debut");
             $table->date("date_fin");
