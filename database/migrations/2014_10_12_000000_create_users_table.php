@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('postnom');
             $table->string('prenom');
-            $table->string('image')->default("/template/files/personals/images/__avatar.png");
+            $table->string('image')->default("/storage/files/personals/images/__avatar.png");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

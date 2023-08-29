@@ -4,10 +4,11 @@ namespace App\Http\Livewire\home;
 
 use App\Models\Agent;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
-use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridColumns};
 
 final class AgentTable extends PowerGridComponent
@@ -52,7 +53,7 @@ final class AgentTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Agent::query();
+        return Agent::query()->where("entreprise_id",Auth::user()->entreprises->id);
     }
 
     /*
@@ -94,7 +95,7 @@ final class AgentTable extends PowerGridComponent
             ->addColumn('civilite', fn (Agent $Agent) => $Agent->civilite)
             ->addColumn('email', fn (Agent $Agent) => "<a href='mailto:".$Agent->email."' target='_blank'>".$Agent->email."<a/>")
             ->addColumn('fonction', fn (Agent $Agent) =>$Agent->fonction)
-            ->addColumn('date_debut', fn (Agent $Agent) => $retVal = (!empty($Agent->Convention)) ? Carbon::parse($Agent->Convention->date_debut)->format('d/m/Y à H:i:s') : "<span class='alert alert-danger'>Le contrat Non definit</span>")
+            ->addColumn('date_debut', fn (Agent $Agent) => $retVal = (!empty($Agent->Convention)) ? Carbon::parse($Agent->Convention->date_debut)->format('d/m/Y à H:i:s') : "<span class='alert alert-warning'>Le contrat Non defini</span>")
             ->addColumn('created_at_formatted', fn (Agent $Agent) => Carbon::parse($Agent->created_at)->format('d/m/Y à H:i:s'));
     }
 

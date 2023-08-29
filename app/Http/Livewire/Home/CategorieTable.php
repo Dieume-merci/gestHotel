@@ -4,10 +4,11 @@ namespace App\Http\Livewire\home;
 
 use App\Models\Categorie;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
-use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridColumns};
 
 final class CategorieTable extends PowerGridComponent
@@ -52,7 +53,7 @@ final class CategorieTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Categorie::query();
+        return Categorie::query()->where("entreprise_id",Auth::user()->entreprises->id);
     }
 
     /*

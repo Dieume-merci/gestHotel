@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Entreprise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +21,8 @@ class ClientFactory extends Factory
         return [
             "designation"=>$this->faker->company,
             "contact"=>$this->faker->phoneNumber,
+            "entreprise_id"=>Entreprise::factory(),
+            "user_id"=>User::factory(),
             "email"=>$this->faker->safeEmailDomain
         ];
     }

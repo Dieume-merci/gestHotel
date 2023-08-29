@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Entreprise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,8 @@ class CategorieFactory extends Factory
     {
         return [
             "designation"=>$this->faker->streetName,
+            "entreprise_id"=>Entreprise::factory(),
+            "user_id"=>User::factory(),
             "unite"=>$this->faker->countryCode,
         ];
     }

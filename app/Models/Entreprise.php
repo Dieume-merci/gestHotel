@@ -19,6 +19,10 @@ class Entreprise extends Model
     {
         return $this->belongsToMany(Client::class,'contrats')->withPivot("id","date_debut","date_fin","close","cout","created_at")->whereNull('contrats.deleted_at');
     }
+    public function Client():HasMany
+    {
+        return $this->hasMany(Client::class);
+    }
     public function Agents():HasMany
     {
        return $this->hasMany(Agent::class);

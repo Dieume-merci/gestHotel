@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Categorie;
+use App\Models\User;
 use App\Models\Client;
+use App\Models\Categorie;
+use App\Models\Entreprise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +23,8 @@ class ReserveFactory extends Factory
         return [
             "categorie_id"=>Categorie::factory(),
             "client_id"=>Client::factory(),
+            "user_id"=>User::factory(),
+            "entreprise_id"=>Entreprise::factory(),
             "quantite"=>$this->faker->randomDigit(),
             "quantite_totale"=>$this->faker->randomDigit(),
             "quantite_totale_generale"=>$this->faker->randomDigit()

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Entreprise;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,7 @@ class DomaineFactory extends Factory
     {
         return [
             "user_id"=>User::factory(),
+            "entreprise_id"=>Entreprise::factory(),
             "designation"=>$this->faker->domainName
         ];
     }

@@ -9,60 +9,24 @@
                 <div class="row">
                     <div class="col-5">
                         <div class="text-center">
-                            <img src="{{$agent->image ?? ''}}" class="rounded" style="width: 100%" alt="image">
-                            <caption>
-                                <h4>
-                                    {{$agent->nom ?? ''}} 
-                                    {{$agent->postnom ?? ''}} 
-                                    {{$agent->prenom ?? ''}} 
-                                </h4>
-                            </caption>
+                            {{-- <img src="{{$client->logo ?? ''}}" class="rounded" width="100%" alt="image"> --}}
                         </div>
                         <hr width="50%">
-                        <table class="table table-bordered">
-                            <tr>
-                                <td>Cv</td>
-                                <td class="d-flex flex-row-reverse p-3">
-                                    <a href="{{$agent->document ?? ''}}" target="_blank">
-                                        <img src="/storage/files/personals/documents/__document.png" class="rounded" style="width: 100%" alt="image">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Contrat</td>
-                                <td class="d-flex flex-row-reverse p-3">
-                                    <a href="{{$agent->Convention->close ?? ''}}" target="_blank">
-                                        <img src="/storage/files/personals/documents/__close.png" class="rounded" style="width: 100%" alt="image">
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
+                        {{-- {{$contrat}} --}}
                     </div>
                     <div class="col-7">
                         <table class="table">
                             <tr>
-                                <th>Domaine</th>
-                                <td>{{$agent->Domaines->designation ?? ''}}</td>
+                                <th>Designation</th>
+                                <td>{{$client->designation ?? ''}}</td>
                             </tr>
                             <tr>
                                 <th>Civilite</th>
-                                <td>{{$agent->civilite ?? ''}}</td>
+                                <td>{{$client->email ?? ''}}</td>
                             </tr>
                             <tr>
                                 <th>Lieu d'Affectation</th>
-                                <td>{{$agent->AgentAffecterContrat->Contrat->Entreprises->designation ?? ''}}</td>
-                            </tr>
-                            <tr>
-                                <th>D. d'Affectation</th>
-                                <td>{{$agent->AgentAffecterContrat->created_at ?? ''}}</td>
-                            </tr>
-                            <tr>
-                                <th>D. Debut Contrat</th>
-                                <td>{{$agent->Convention->date_debut ?? ''}}</td>
-                            </tr>
-                            <tr>
-                                <th>D. Fin Contrat</th>
-                                <td>{{$agent->Convention->date_fin ?? ''}}</td>
+                                <td>{{$client->contact ?? ''}}</td>
                             </tr>
                             <tr>
                                 <th>Autres Modifications</th>

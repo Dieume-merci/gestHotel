@@ -5,6 +5,7 @@ namespace App\Http\Livewire\home;
 use App\Models\Contrat;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
@@ -36,7 +37,6 @@ final class ContratTable extends PowerGridComponent
                 ->showRecordCount(),
         ];
     }
-
     /*
     |--------------------------------------------------------------------------
     |  Datasource
@@ -52,7 +52,7 @@ final class ContratTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Contrat::query();
+        return Contrat::query()->where("entreprise_id",Auth::user()->entreprises->id);
     }
 
     /*
@@ -96,7 +96,6 @@ final class ContratTable extends PowerGridComponent
             ->addColumn('date_fin', fn (Contrat $Contrat) => Carbon::parse($Contrat->date_fin)->format('d/m/Y à H:i:s'))
             ->addColumn('contact', fn (Contrat $Contrat) => "<a href='https://wa.me/".$Contrat->contact."'>".$Contrat->contact."<a/>")
             ->addColumn('close', fn (Contrat $Contrat) =>"<a href='".$Contrat->close."' target='_blank'>Voir</a>")
-            ->addColumn('cout', fn (Contrat $Contrat) =>$Contrat->cout.' $')
             ->addColumn('created_at_formatted', fn (Contrat $Contrat) => Carbon::parse($Contrat->created_at)->format('d/m/Y à H:i:s'));
     }
 
@@ -121,7 +120,6 @@ final class ContratTable extends PowerGridComponent
             Column::make('#', 'id'),
             Column::make('Designation', 'designation'),
             Column::make('Email', 'email'),
-            Column::make('Cout', 'cout'),
             Column::make('Contexte', 'contexte'),
             Column::make('Contrat', 'close'),
             Column::make('Date Debut Contrat', 'date_debut', 'date_debut'),

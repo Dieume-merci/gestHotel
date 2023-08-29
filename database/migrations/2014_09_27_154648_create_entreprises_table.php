@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
             $table->string('designation');
-            $table->string('logo')->default("/template/files/company/logo/__company.png");
+            $table->string('logo')->default("/storage/files/files/company/logo/__company.png");
             $table->string('contact');
             $table->string('email');
             $table->string('sigle');
-            $table->string('griffe')->default("/template/files/company/griffe/__company.png");
+            $table->string('griffe')->default("/storage/files/files/company/griffe/__company.png");
             $table->timestamps();
             $table->softDeletes();
         });

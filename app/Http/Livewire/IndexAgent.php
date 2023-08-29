@@ -43,7 +43,7 @@ class IndexAgent extends Component
                 Agents::update($this->agent);
                 $this->dispatchBrowserEvent("success",['message'=>"La mise à jour Effectuée avec success",'modal'=>'openModal']);
                 break;
-            case "Enregistrer":
+            case "Enregistrer ":
                 Agents::store($this->agent);
                 $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
                 break;
