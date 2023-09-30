@@ -3,13 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use App\Models\Entreprise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Categorie>
  */
-class ClientFactory extends Factory
+class CommentaireFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +18,8 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id"=>User::factory(),
+            "contenu"=>$this->faker->streetName,
+            "client_id"=>Client::factory(),
         ];
     }
 }

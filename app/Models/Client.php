@@ -4,31 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Client extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded=[];
-    public function Reserves():HasMany
+    public function User():BelongsTo
     {
-        return $this->hasMany(Reserve::class);
-    }
-    public function Contrats():HasOne
-    {
-        return $this->hasOne(Contrat::class,"client_id");
-    }
-    public function Dotations()
-    {
-        return $this->hasManyThrough(
-            Dotation::class,
-            Reserve::class,
-            'client_id',
-            'reserve_id',
-            'id',
-            'id',
-        );
+        return $this->belongsTo(User::class,"user_id");
     }
 }

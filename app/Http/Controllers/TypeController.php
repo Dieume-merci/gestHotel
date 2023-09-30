@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Reservation;
-use App\Models\Entreprise;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class EntrepriseController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    { 
-        // Reservation::factory()->count(5)->create(); 
-        return view("components.index-entreprise");
+    {
+        return view("components.index-type");
     }
 
     /**
@@ -36,7 +34,7 @@ class EntrepriseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Entreprise $entreprise)
+    public function show(Type $type)
     {
         //
     }
@@ -44,7 +42,7 @@ class EntrepriseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Entreprise $entreprise)
+    public function edit(Type $type)
     {
         //
     }
@@ -52,7 +50,7 @@ class EntrepriseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Entreprise $entreprise)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -60,7 +58,7 @@ class EntrepriseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Entreprise $entreprise)
+    public function destroy(Type $type)
     {
         //
     }

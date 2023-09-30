@@ -49,9 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Dotation::class);
     }
-    public function Reserves():HasMany
+    public function Reservations():HasMany
     {
-        return $this->hasMany(Reserve::class);
+        return $this->hasMany(Reservation::class);
     }
     public function Agents()
     {

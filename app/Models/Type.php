@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-class Entreprise extends Model
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Type extends Model
 {
     use HasFactory,SoftDeletes;
     protected $guarded=[];
-    public function Users():HasMany
+    public function Espaces():HasMany
     {
-       return $this->hasMany(User::class);
+        return $this->HasMany(Espace::class);
     }
 }

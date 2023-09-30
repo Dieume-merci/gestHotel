@@ -19,7 +19,7 @@
         <p class="sidebar-menu-title">{{__("Dashboard")}}</p>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url("WICOM/Home")}}">
+        <a class="nav-link" href="{{ url("HOTEL/Home")}}">
           <i class="typcn typcn-device-desktop menu-icon"></i>
           <span class="menu-title">{{__("Dashboard")}} <span class="badge badge-primary ml-3">{{Auth::user()->Entreprises->sigle}}</span></span>
         </a>
@@ -28,30 +28,15 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#Agents" aria-expanded="false" aria-controls="Agents">
           <i class="typcn typcn-user-add-outline menu-icon"></i>
-          <span class="menu-title">{{__("Gestion Du Personnel")}}</span>
+          <span class="menu-title">{{__("Gestion Des Type App.")}}</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="Agents">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ route("agent.index")}}">{{__("Agents")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route("type.index")}}">{{__("Types")}}</a></li>
           </ul>
         </div>
       </li>
-      <!-- Nouveau menu -->
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#Entreprises" aria-expanded="false" aria-controls="Entreprises">
-          <i class="typcn typcn-film menu-icon"></i>
-          <span class="menu-title">{{__("Gestion De l'Entreprise")}}</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="Entreprises">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("entreprise.index")}}">{{__("Entreprise")}}</a></li>
-          </ul>
-        </div>
-      </li>
-      
-      <!-- Nouveau menu -->
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#Clients" aria-expanded="false" aria-controls="Clients">
           <i class="typcn typcn-briefcase menu-icon"></i>
@@ -66,56 +51,44 @@
       </li>
       <!-- Nouveau menu -->
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#domaines" aria-expanded="false" aria-controls="domaines">
+        <a class="nav-link" data-toggle="collapse" href="#espaces" aria-expanded="false" aria-controls="espaces">
           <i class="typcn typcn-compass menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Domaines")}}</span>
+          <span class="menu-title">{{__("Gestion des Esp.")}}</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="domaines">
+        <div class="collapse" id="espaces">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("domaine.index")}}">{{__("Domaines")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("espace.index")}}">{{__("Espace")}}</a></li>
           </ul>
         </div>
       </li>
       <!-- Nouveau menu -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#Categories" aria-expanded="false" aria-controls="Categories">
           <i class="typcn typcn-globe-outline menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Categories")}}</span>
+          <span class="menu-title">{{__("Gestion des Rés")}}</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="Categories">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("categorie.index")}}">{{__("Categorie")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("reservation.index")}}">{{__("Réservations")}}</a></li>
           </ul>
         </div>
-      </li>
+      </li> --}}
       <!-- Nouveau menu -->
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#reserve" aria-expanded="false" aria-controls="reserve">
           <i class="typcn typcn-document-text menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Entrées")}}</span>
+          <span class="menu-title">{{__("Gestion des Com")}}</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="reserve">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("reserve.index")}}">{{__("Entrées")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("commentaire.index")}}">{{__("Commentaires")}}</a></li>
           </ul>
         </div>
       </li>
       <!-- Nouveau menu -->
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#sortie" aria-expanded="false" aria-controls="sortie">
-          <i class="typcn typcn-chart-pie-outline menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Sorties")}}</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="sortie">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("dotation.index")}}">{{__("Sorties")}}</a></li>
-          </ul>
-        </div>
-      </li>
     </ul>
   </nav>
     <div class="main-panel">

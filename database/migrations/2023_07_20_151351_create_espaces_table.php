@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('entreprises', function (Blueprint $table) {
+        Schema::create('espaces', function (Blueprint $table) {
             $table->id();
             $table->string('designation');
-            $table->string('logo')->default("/storage/files/__company.png");
-            $table->string('contact');
-            $table->string('email');
-            $table->string('sigle');
-            $table->string('griffe')->default("/storage/files/__company.png");
+            $table->foreignId('type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('cout');
+            $table->string("image")->default("/storage/files/__espace.png");
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('entreprises');
+        Schema::dropIfExists('espaces');
     }
 };

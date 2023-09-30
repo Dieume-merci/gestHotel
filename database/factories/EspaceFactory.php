@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Type;
 use App\Models\User;
-use App\Models\Entreprise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\contrat>
  */
-class ClientFactory extends Factory
+class EspaceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,10 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
+            "type_id"=>Type::factory(),
             "user_id"=>User::factory(),
+            "cout"=>$this->faker->randomDigit(),
+            "designation"=>$this->faker->randomElement,
         ];
     }
 }

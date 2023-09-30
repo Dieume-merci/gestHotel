@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('entreprises', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
             $table->string('designation');
-            $table->string('logo')->default("/storage/files/__company.png");
-            $table->string('contact');
-            $table->string('email');
-            $table->string('sigle');
-            $table->string('griffe')->default("/storage/files/__company.png");
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('entreprises');
+        Schema::dropIfExists('types');
     }
 };

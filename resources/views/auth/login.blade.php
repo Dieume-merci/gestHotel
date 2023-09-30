@@ -10,7 +10,7 @@
               <div class="brand-logo">
                 {{-- <img src="../../images/logo.svg" alt="logo"> --}}
               </div>
-              <h4>Connectez-vous</h4>
+              <h4>Famille Lodge</h4>
               <h6 class="font-weight-light">Connecter Pour Continuer</h6>
               <form class="pt-3" method="POST" action="{{ route('login') }}">
                 @csrf

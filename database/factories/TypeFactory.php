@@ -2,14 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
-use App\Models\Entreprise;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Convention>
  */
-class ClientFactory extends Factory
+class TypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +17,7 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id"=>User::factory(),
+            "designation"=>$this->faker->randomElement,
         ];
     }
 }

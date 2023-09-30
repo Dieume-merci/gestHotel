@@ -7,21 +7,19 @@ Route::get('/', function () {
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
-    'middleware'=>'App\Http\middleware\Authenticate',
-    'prefix' => 'WICOM',
+    'middleware'=>'App\Http\Middleware\Authenticate',
+    'prefix' => 'HOTEL',
 
 ], function(){
     Route::get('Home', function () {
     return view('home');
     });
     Route::resources([
-        'agent'=>AgentController::class,
+        'type'=>TypeController::class,
         'client'=>ClientController::class,
         'entreprise'=>EntrepriseController::class,
-        'reserve'=>ReserveController::class,
-        'categorie'=>CategorieController::class,
-        'domaine'=>DomaineController::class,
-        'dotation'=>DotationController::class,
+        'commentaire'=>CommentaireController::class,
+        'espace'=>EspaceController::class,
         'user'=>UserController::class,
     ]);
 });
