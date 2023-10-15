@@ -9,6 +9,12 @@
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item nav-profile dropdown">
+          <a class="nav-link dropdown-toggle  pl-0 pr-0" href="/#rooms" >
+            <i class="typcn typcn-film menu-icon"></i>
+            <span class="nav-profile-name">{{__('Reserver')}}</span>
+          </a>
+        </li>
+        <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle  pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
             <i class="typcn typcn-user-outline mr-0"></i>
             <span class="nav-profile-name">{{__('Profil')}}</span>

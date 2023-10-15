@@ -26,6 +26,7 @@ class AddEspaceRequest extends FormRequest
             'espace.cout'=>'required|int',
             'espace.image'=>'file|max:2048',
             'espace.type_id'=>'required|int',
+            'espace.description'=>'required',
         ];
     }
 }

@@ -1,15 +1,13 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('components.index');
 });
 Route::group([
     'namespace' => 'App\Http\Controllers',
-    'middleware'=>'App\Http\Middleware\Authenticate',
+    'middleware'=>['auth','role:admin'],
     'prefix' => 'HOTEL',
-
 ], function(){
     Route::get('Home', function () {
     return view('home');
@@ -21,5 +19,18 @@ Route::group([
         'commentaire'=>CommentaireController::class,
         'espace'=>EspaceController::class,
         'user'=>UserController::class,
+    ]);
+});
+Route::group([
+    'namespace' => 'App\Http\Controllers',
+    'middleware'=>['auth'],
+    'prefix' => 'HOTEL',
+], function(){
+    Route::get('Home', function () {
+    return view('home');
+    });
+    Route::resources([
+        'client'=>ClientController::class,
+        'commentaire'=>CommentaireController::class,
     ]);
 });

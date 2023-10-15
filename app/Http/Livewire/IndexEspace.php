@@ -28,11 +28,13 @@ class IndexEspace extends Component
         $this->validate();
         Espaces::store($this->espace);
         $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
+        $this->reset("espace");
     }
     public function Espacedelete(Espace $espace){
         if(!count($espace->Reservations)){
             espaces::destroy($espace->id);
             $this->dispatchBrowserEvent("success",['message'=>"Suppression Bien Faite"]);
+            $this->reset("espace");
         }else{
             $this->dispatchBrowserEvent("erreur",['message'=>"Impossible, Il ya Un Espace Qui est Affecté à ce Type"]);
         }

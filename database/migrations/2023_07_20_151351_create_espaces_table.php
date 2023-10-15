@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('type_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('cout');
+            $table->text('description');
             $table->string("image")->default("/storage/files/__espace.png");
             $table->timestamps();
             $table->softDeletes();

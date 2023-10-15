@@ -6,6 +6,7 @@ namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -41,31 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function Domaines():HasMany
-    {
-        return $this->hasMany(Domaine::class);
-    }
-    public function Dotations():HasMany
-    {
-        return $this->hasMany(Dotation::class);
-    }
     public function Reservations():HasMany
     {
         return $this->hasMany(Reservation::class);
     }
-    public function Agents()
+    public function Client():HasOne
     {
-        return $this->hasManyThrough(
-            Agent::class,
-            Domaine::class,
-            'user_id',
-            'domaine_id',
-            'id',
-            'id',
-        );
+        return $this->hasOne(Client::class);
     }
     public function Entreprises():BelongsTo
     {
        return $this->belongsTo(Entreprise::class,'entreprise_id');
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'role_users')->whereNull('role_users.deleted_at');
     }
 }

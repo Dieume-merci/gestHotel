@@ -6,6 +6,7 @@ use App\Models\Commentaire;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+// use App\Http\Middleware\EnsureUserHasRole;
 use PowerComponents\LivewirePowerGrid\Filters\Filter;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\{ActionButton, WithExport};
@@ -53,7 +54,11 @@ final class CommentaireTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Commentaire::query();
+        if(auth()->user()->roles()->where('designation','admin')->exists()){
+            return Commentaire::query();
+        }else {
+            return Commentaire::query()->where("client_id",Auth::user()->Client->id);
+        }        
     }
 
     /*
@@ -87,13 +92,23 @@ final class CommentaireTable extends PowerGridComponent
     */
     public function addColumns(): PowerGridColumns
     {
-        return PowerGrid::columns()
-            ->addColumn('id')
-            ->addColumn('Ui',fn (Commentaire $Commentaire) => "<img src='https://eu.ui-avatars.com/api/?name=".$Commentaire->contenu."&background=random&color=fff&rounded=true&bold=true'>")
-            ->addColumn('designation', fn (Commentaire $Commentaire) => $Commentaire->contenu)
-            ->addColumn('destinataire', fn (Commentaire $Commentaire) => $Commentaire->Client->User->nom.''.$Commentaire->Client->User->postnom.' '.$Commentaire->Client->User->prenom)
-            ->addColumn('created_at_formatted', fn (Commentaire $Commentaire) => Carbon::parse($Commentaire->created_at)->format('d/m/Y à H:i:s'))
-            ->addColumn('repondre', fn (Commentaire $Commentaire) => "<a class='btn btn-outline-success mdi mdi-eye btn-sm btn-rounded' href='malto:".$Commentaire->Client->User->email."'> Repondre</a>");
+        if(auth()->user()->roles()->where('designation','admin')->exists()){ 
+            return PowerGrid::columns()
+                ->addColumn('id')
+                ->addColumn('Ui',fn (Commentaire $Commentaire) => "<img src='https://eu.ui-avatars.com/api/?name=".$Commentaire->contenu."&background=random&color=fff&rounded=true&bold=true'>")
+                ->addColumn('designation', fn (Commentaire $Commentaire) => $Commentaire->contenu)
+                ->addColumn('destinataire', fn (Commentaire $Commentaire) => $Commentaire->Client->User->nom.''.$Commentaire->Client->User->postnom.' '.$Commentaire->Client->User->prenom)
+                ->addColumn('created_at_formatted', fn (Commentaire $Commentaire) => Carbon::parse($Commentaire->created_at)->format('d/m/Y à H:i:s'))
+                ->addColumn('repondre', fn (Commentaire $Commentaire) => "<a class='btn btn-outline-success mdi mdi-eye btn-sm btn-rounded' href='malto:".$Commentaire->Client->User->email."'> Repondre</a>");
+        }else {
+            return PowerGrid::columns()
+                ->addColumn('id')
+                ->addColumn('Ui',fn (Commentaire $Commentaire) => "<img src='https://eu.ui-avatars.com/api/?name=".$Commentaire->contenu."&background=random&color=fff&rounded=true&bold=true'>")
+                ->addColumn('designation', fn (Commentaire $Commentaire) => $Commentaire->contenu)
+                ->addColumn('destinataire', fn (Commentaire $Commentaire) => $Commentaire->Client->User->nom.''.$Commentaire->Client->User->postnom.' '.$Commentaire->Client->User->prenom)
+                ->addColumn('created_at_formatted', fn (Commentaire $Commentaire) => Carbon::parse($Commentaire->created_at)->format('d/m/Y à H:i:s'));
+                // ->addColumn('repondre', fn (Commentaire $Commentaire) => "<a class='btn btn-outline-success mdi mdi-eye btn-sm btn-rounded' href='malto:".$Commentaire->Client->User->email."'> Repondre</a>");
+        }
     }
 
     /*
@@ -112,15 +127,25 @@ final class CommentaireTable extends PowerGridComponent
       */
     public function columns(): array
     {
-        return [
-            Column::make('Id', 'id'),
-            Column::make('UI', 'Ui'),
-            Column::make('Destinataire', 'destinataire'),
-            Column::make('Contenu', 'designation'),
-            Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')->sortable(),
-            Column::make('Repondre','repondre'),
-
-        ];
+        if(auth()->user()->roles()->where('designation','admin')->exists()){ 
+            return [
+                Column::make('Id', 'id'),
+                Column::make('UI', 'Ui'),
+                Column::make('Destinataire', 'destinataire'),
+                Column::make('Contenu', 'designation'),
+                Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')->sortable(),
+                Column::make('Repondre','repondre'),
+            ];
+        }
+        else {
+            return [
+                Column::make('Id', 'id'),
+                Column::make('UI', 'Ui'),
+                Column::make('Destinataire', 'destinataire'),
+                Column::make('Contenu', 'designation'),
+                Column::make('Date Enregistrement', 'created_at_formatted', 'created_at')->sortable(),
+            ];
+        }
     }
 
     /**
@@ -149,25 +174,23 @@ final class CommentaireTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
-    public function actions(): array
-    {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('Commentaire.edit', function(\App\Models\Commentaire $Commentaire) {
-                    return $Commentaire->id;
-               }),
+    
+    // public function actions(): array
+    // {
+    //    return [
+    //        Button::make('edit', 'Modifier')
+    //            ->class('btn btn-outline-warning btn-rounded mdi mdi-lead-pencil btn-sm')
+    //            ->route('commentaire.index', function(\App\Models\Commentaire $Commentaire) {
+    //                 return $Commentaire->id;
+    //            }),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('Commentaire.destroy', function(\App\Models\Commentaire $Commentaire) {
-                    return $Commentaire->id;
-               })
-               ->method('delete')
-        ];
-    }
-    */
+    //        Button::make('destroy', 'Delete')
+    //            ->class('btn btn-outline-warning btn-rounded mdi mdi-lead-pencil btn-sm')
+    //            ->route('commentaire.index', function(\App\Models\Commentaire $Commentaire) {
+    //                 return $Commentaire->id;
+    //            }),
+    //     ];
+    // }
 
     /*
     |--------------------------------------------------------------------------

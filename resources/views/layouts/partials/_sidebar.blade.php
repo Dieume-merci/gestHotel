@@ -25,6 +25,7 @@
         </a>
       </li>
       <!-- Nouveau menu -->
+      @if ((Auth::user()->roles->where('designation','admin')!='[]'))
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#Agents" aria-expanded="false" aria-controls="Agents">
           <i class="typcn typcn-user-add-outline menu-icon"></i>
@@ -34,18 +35,6 @@
         <div class="collapse" id="Agents">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{ route("type.index")}}">{{__("Types")}}</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#Clients" aria-expanded="false" aria-controls="Clients">
-          <i class="typcn typcn-briefcase menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Clients")}}</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="Clients">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("client.index")}}">{{__('Clients')}}</a></li>
           </ul>
         </div>
       </li>
@@ -62,20 +51,19 @@
           </ul>
         </div>
       </li>
-      <!-- Nouveau menu -->
-      {{-- <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#Categories" aria-expanded="false" aria-controls="Categories">
-          <i class="typcn typcn-globe-outline menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Rés")}}</span>
+      @endif
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#Clients" aria-expanded="false" aria-controls="Clients">
+          <i class="typcn typcn-briefcase menu-icon"></i>
+          <span class="menu-title">{{__("Gestion des Clients")}}</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="Categories">
+        <div class="collapse" id="Clients">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{route("reservation.index")}}">{{__("Réservations")}}</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{route("client.index")}}">{{__('Clients')}}</a></li>
           </ul>
         </div>
-      </li> --}}
-      <!-- Nouveau menu -->
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#reserve" aria-expanded="false" aria-controls="reserve">
           <i class="typcn typcn-document-text menu-icon"></i>

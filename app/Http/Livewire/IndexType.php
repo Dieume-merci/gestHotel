@@ -24,6 +24,7 @@ class IndexType extends Component
         $this->validate();
         Types::store($this->type);
         $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
+        $this->reset("type");
     }
     public function destroyType(Type $type){
         if(!count($type->Espaces)){
@@ -36,6 +37,7 @@ class IndexType extends Component
     public function edit(){
             Types::update($this->type);
             $this->dispatchBrowserEvent("success",['message'=>"Suppression Bien Faite",'modal'=>'modifier-type']);
+            $this->reset("type");
     }
     public function editType(Type $type)
     {

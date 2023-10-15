@@ -23,6 +23,7 @@ class EspaceFactory extends Factory
             "user_id"=>User::factory(),
             "cout"=>$this->faker->randomDigit(),
             "designation"=>$this->faker->randomElement,
+            "description"=>$this->faker->text,
         ];
     }
 }

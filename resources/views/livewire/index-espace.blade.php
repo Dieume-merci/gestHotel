@@ -14,12 +14,12 @@
                     @error('espace.designation')<span class="text-danger">{{$message}}</span>@enderror
                     <div class="form-group">
                         <label class="">Coût</label>
-                        <input type="text" class="form-control" wire:model="espace.cout" placeholder="designation" aria-label="designation">
+                        <input type="text" class="form-control" wire:model="espace.cout" placeholder="cout" aria-label="cout">
                     </div>
                     @error('espace.cout')<span class="text-danger">{{$message}}</span>@enderror
                     <div class="form-group">
                         <label class="">Type</label>
-                        <select class="form-control" wire:model="espace.type_id" placeholder="designation" aria-label="Type d'Espace">
+                        <select class="form-control" wire:model="espace.type_id" placeholder="Type" aria-label="Type d'Espace">
                             <option value="">Selectionner Un Type</option>
                             @foreach ($types as $type)
                                 <option value="{{$type->id}}">{{$type->designation}}</option>  
@@ -29,9 +29,14 @@
                     @error('espace.type_id')<span class="text-danger">{{$message}}</span>@enderror
                     <div class="form-group">
                         <label class="">Image</label>
-                        <input type="file" class="form-control" wire:model="espace.image" placeholder="designation" aria-label="designation">
+                        <input type="file" class="form-control" wire:model="espace.image" placeholder="image" aria-label="image">
                     </div>
                     @error('espace.image')<span class="text-danger">{{$message}}</span>@enderror
+                    <div class="form-group">
+                        <label class="">Description</label>
+                        <textarea class="form-control" wire:model="espace.description" placeholder="description" aria-label="description" cols="30" rows="10"></textarea>
+                    </div>
+                    @error('espace.description')<span class="text-danger">{{$message}}</span>@enderror
                     <div class="mt-2">
                         <button class="btn btn-inverse-success col-lg-12 btn-sm btn-rounded typcn typcn-thumbs-up"> Ajouter</button>
                     </div>
