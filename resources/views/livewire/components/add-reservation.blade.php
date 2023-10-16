@@ -20,9 +20,10 @@
                     @error('reservation.heure')<span class="text-danger">{{$message}}</span>@enderror
                     <div class="form-group">
                         <label class="">Montant à Payer</label>
-                        <input type="text" class="form-control" wire:model="reservation.montant" placeholder="montant" aria-label="montant">
+                        <input type="text" class="form-control" @readonly(true) wire:model="reservation.montant" placeholder="montant" aria-label="montant">
                     </div>
                     @error('reservation.montant')<span class="text-danger">{{$message}}</span>@enderror
+                    <span class="text-danger pull-rigth">{{$fin}}</span>
                     <div class="mt-2">
                         <button class="btn btn-outline-success col-lg-12 btn-sm btn-rounded typcn typcn-thumbs-up"> Reservez</button>
                     </div>

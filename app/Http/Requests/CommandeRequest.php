@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\DetecterReservation;
 
 class CommandeRequest extends FormRequest
 {
@@ -23,8 +24,9 @@ class CommandeRequest extends FormRequest
     {
         return [
             'reservation.montant'=>'required|',
-            'reservation.heure'=>'required|integer',
-            'reservation.date_reservee'=>'required|date',
+            'reservation.heure'=>['required',new DetecterReservation(1)
+        ],
+            'reservation.date_reservee'=>'required|date|after:now',
             'reservation.email'=>'required|email',
         ];
     }

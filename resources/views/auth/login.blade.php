@@ -53,7 +53,7 @@
                   </div>
                   <div class="text-center mt-4 font-weight-light">
                     {{ __("Vous n'avez pas Un compte?") }}
-                     <a href="#" data-target="#register" data-toggle="modal" class="text-primary">
+                     <a href="{{ route("register")}}" class="text-primary">
                       {{ __("Créer") }}
                     </a>
                   </div>
