@@ -24,7 +24,7 @@ class AddEspaceRequest extends FormRequest
         return [
             'espace.designation'=>'required|max:30|min:5',
             'espace.cout'=>'required|int',
-            'espace.image'=>'file|max:2048',
+            'espace.image'=>'file|max:5120',
             'espace.type_id'=>'required|int',
             'espace.description'=>'required',
         ];

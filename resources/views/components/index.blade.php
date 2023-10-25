@@ -82,7 +82,8 @@
         <div id="welcome">
             <div class="container">
                 <h3>BIENVENU A L'HOTEL LODGE</h3>
-                <p> Nous Sommes Un Hotel qui Vous offre Plusieurs services, Pour votre securité et votre Aisance, nous mettons A votre disposition l'hebergement ave un Confort moderne</p>
+                <p> Nous sommes un hôtel situé à walungu, bukavu, sud kivu, RDC,Nous vous offrons plusieurs
+                    services en toute sécurité . Chez nous le client est Roi.</p>
             </div>
         </div>
         <!-- Welcome Section End -->
@@ -91,9 +92,9 @@
         <div id="amenities" class="home-amenities">
             <div class="container">
                 <div class="section-header">
-                    <h2>Parlons du Confort de Nos services</h2>
+                    <h2>VOICI NOS SERVICES</h2>
                     <p>
-                        Nous vous servons au dela de l'imagination.
+                        HEBERGEMENT, CANTINE, BAR, cuisine, SALLE DE FETE, salle de réunion, dépôt relais etc.
                     </p>
                 </div>
                 <div class="row">
@@ -145,7 +146,7 @@
         <!-- Room Section Start -->
         <livewire:reservation>
 
-        <div id="amenities" class="home-amenities">
+        {{-- <div id="amenities" class="home-amenities">
             <div class="container">
                 <div class="section-header">
                     <h2>Room Booking</h2>
@@ -188,11 +189,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Booking Section End -->
         
         <!-- Call Section Start -->
-        <div id="call-us">
+        {{-- <div id="call-us">
             <div class="container">
                 <div class="section-header">
                     <h2>Assistance Vocale</h2>
@@ -206,9 +207,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         
-        <div id="subscribe">
+        {{-- <div id="subscribe">
             <div class="container">
                 <div class="section-header">
                     <h3>S'enregistrer sur notre Newslater</h3>
@@ -227,7 +228,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Call Section End -->
         
         <!-- Footer Section Start -->

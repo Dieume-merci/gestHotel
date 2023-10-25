@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center">Information d'un agent</h4>
+                <h4 class="modal-title text-center">Faites UNe Reservation Maintenant</h4>
                 <button class="close" data-dismiss="modal">X</button>
             </div>
             <div class="modal-body">

@@ -44,6 +44,11 @@ class IndexType extends Component
         $this->type=$type;
         $this->dispatchBrowserEvent('openModal',['modal'=>'modifier-type']);
     }
+    public function quitteer()
+    {
+        $this->dispatchBrowserEvent('closeModal',['modal'=>'modifier-type']);
+        $this->reset("type");
+    }
     public function render()
     {
         return view('livewire.index-type');

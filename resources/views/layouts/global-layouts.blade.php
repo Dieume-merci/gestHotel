@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/style.css') !!}">
     <link rel="stylesheet" href="{!! url('template/vendors/mdi/css/materialdesignicons.min.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/sweetalert.css') !!}">
-    <link rel="shortcut icon" href="{{Auth::user()->Entreprises->logo}}">
+    <link rel="shortcut icon" href="{{asset(Auth::user()->Entreprises->logo)}}">
     @livewireStyles
   </head>
   <body>

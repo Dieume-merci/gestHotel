@@ -5,10 +5,10 @@
   <div class="col-7">
     <img src="royal/img/slider/header-slider-2.jpg" width="100%" height="100%" alt="">
   </div>
-  <div class="col-lg-5">
+  <div class="col-lg-5 bg-success">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper " style="background-color: white;">
+        <div class="content-wrapper " style="background-color: #ddd;;">
           <div class="row w-100 mx-0">
             <div class="col-lg-12 mx-auto">
               <div class="auth-form-light text-left py-5 px-sm-5">
@@ -75,7 +75,7 @@
                   </div>
                   <div class="mt-3">
                     <button class="btn btn-block btn-primary font-weight-medium auth-form-btn">
-                      {{ __('REGISTER') }}
+                      {{ __("S'ENREGISTRER") }}
                     </button>
                   </div>
                 </form>

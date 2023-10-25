@@ -26,9 +26,13 @@ class IndexEspace extends Component
     public function Create(){
         sleep(2);
         $this->validate();
-        Espaces::store($this->espace);
-        $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
-        $this->reset("espace");
+        try {
+            Espaces::store($this->espace);
+            $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
+            $this->reset("espace");
+        } catch (\Throwable $th) {
+            $this->dispatchBrowserEvent("erreur",['message'=>"Ces Données Existaient deja"]);
+        }
     }
     public function Espacedelete(Espace $espace){
         if(!count($espace->Reservations)){
@@ -48,6 +52,11 @@ class IndexEspace extends Component
     {
         $this->espace=$espace;
         $this->dispatchBrowserEvent('openModal',['modal'=>'openModal']);
+    }
+    public function quitteer()
+    {
+        $this->dispatchBrowserEvent('closeModal',['modal'=>'openModal']);
+        $this->reset("espace");
     }
     public function render()
     {

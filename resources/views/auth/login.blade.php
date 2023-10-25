@@ -5,17 +5,17 @@
   <div class="col-7">
     <img src="royal/img/slider/header-slider-2.jpg" width="100%" height="100%" alt="">
   </div>
-  <div class="col-lg-5">
+  <div class="col-lg-5 bg-success">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="content-wrapper d-flex align-items-center auth px-0" style="background-color: white;">
+        <div class="content-wrapper d-flex align-items-center auth px-0 " style="background-color: #cccc;">
           <div class="row w-100 mx-0">
             <div class="col-lg-12 mx-auto">
               <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                 <div class="brand-logo">
                   {{-- <img src="../../images/logo.svg" alt="logo"> --}}
                 </div>
-                <h4>Famille Lodge</h4>
+                <h4>Hôtel Basile Lodge</h4>
                 <h6 class="font-weight-light">Connecter Pour Continuer</h6>
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
                   @csrf
@@ -37,7 +37,7 @@
                   </div>
                   <div class="mt-3">
                     <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">
-                      {{ __('SIGN IN') }}
+                      {{ __('CONNEXION') }}
                     </button>
                   </div>
                   <div class="my-2 d-flex justify-content-between align-items-center">
@@ -48,7 +48,7 @@
                       </label>
                     </div>
                     <a href="#" class="auth-link text-black"> 
-                      {{ __('Mot de passe oublié?') }}
+                      {{-- {{ __('Mot de passe oublié?') }} --}}
                     </a>
                   </div>
                   <div class="text-center mt-4 font-weight-light">

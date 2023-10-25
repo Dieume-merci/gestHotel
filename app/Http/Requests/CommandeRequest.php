@@ -24,8 +24,10 @@ class CommandeRequest extends FormRequest
     {
         return [
             'reservation.montant'=>'required|',
-            'reservation.heure'=>['required',new DetecterReservation(1)
-        ],
+        //     'reservation.heure'=>['required',new DetecterReservation(1)
+        // ],
+            'reservation.heure'=>['required'],
+
             'reservation.date_reservee'=>'required|date|after:now',
             'reservation.email'=>'required|email',
         ];

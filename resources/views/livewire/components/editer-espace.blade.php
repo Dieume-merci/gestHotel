@@ -1,9 +1,9 @@
-<div wire:ignore.self class="modal fade" id="openModal">
+<div wire:ignore.self class="modal fade" id="openModal" data-backdrop="false">
     <div class="modal-dialog">
-        <div class="modal-content modal-sm">
+        <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center">Information d'un agent</h4>
-                <button class="close" data-dismiss="modal">X</button>
+                <h4 class="modal-title text-center">Modifier Information d'un Type Espace</h4>
+                <button class="close" wire:click="quitteer">X</button>
             </div>
             <div class="modal-body">
                 <form wire:submit.prevent="edit" class="form-group" enctype="multipart/form-data">
@@ -39,7 +39,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger btn-sm" data-dismiss="modal"> Fermer</button>
+                <button class="btn btn-danger btn-sm" wire:click="quitteer"> Fermer</button>
             </div>
         </div>
     </div>

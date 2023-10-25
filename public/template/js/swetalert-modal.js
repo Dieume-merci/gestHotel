@@ -16,6 +16,9 @@ window.addEventListener('erreur',event => {
 window.addEventListener('openModal',event => {
     $('#'+ event.detail.modal).modal('show');
 });
+window.addEventListener('closeModal',event => {
+    $('#'+ event.detail.modal).modal('hide');
+});
 function logout(){
       swal({
         title: "Se Deconnecter ?",
