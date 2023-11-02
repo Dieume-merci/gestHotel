@@ -29,6 +29,7 @@
     </head>
 
     <body>
+
         <!-- Header Section Start -->
         <header id="header">
             <a href="" class="logo"><img src="{!! url('royal/img/logo.jpg') !!}" alt="logo"></a>
@@ -145,7 +146,6 @@
         
         <!-- Room Section Start -->
         <livewire:reservation>
-
         {{-- <div id="amenities" class="home-amenities">
             <div class="container">
                 <div class="section-header">

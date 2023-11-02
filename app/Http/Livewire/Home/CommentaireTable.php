@@ -99,7 +99,7 @@ final class CommentaireTable extends PowerGridComponent
                 ->addColumn('designation', fn (Commentaire $Commentaire) => $Commentaire->contenu)
                 ->addColumn('destinataire', fn (Commentaire $Commentaire) => $Commentaire->Client->User->nom.''.$Commentaire->Client->User->postnom.' '.$Commentaire->Client->User->prenom)
                 ->addColumn('created_at_formatted', fn (Commentaire $Commentaire) => Carbon::parse($Commentaire->created_at)->format('d/m/Y à H:i:s'))
-                ->addColumn('repondre', fn (Commentaire $Commentaire) => "<a class='btn btn-outline-success mdi mdi-eye btn-sm btn-rounded' href='malto:".$Commentaire->Client->User->email."'> Repondre</a>");
+                ->addColumn('repondre', fn (Commentaire $Commentaire) => "<a class='btn btn-outline-success mdi mdi-eye btn-sm btn-rounded' href='mailto:".$Commentaire->Client->User->email."'> Repondre</a>");
         }else {
             return PowerGrid::columns()
                 ->addColumn('id')

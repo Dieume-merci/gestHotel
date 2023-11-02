@@ -20,7 +20,7 @@
             <span class="nav-profile-name">{{__('Profil')}}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
+            <a class="dropdown-item" href="{{ url('HOTEL/account')}}">
             <i class="typcn typcn-cog text-primary"></i>
               {{__('Parametre')}}
             </a>
@@ -38,4 +38,5 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
       @csrf
   </form>
-  </nav>
+  {{-- @include('auth.forgest') --}}
+</nav>

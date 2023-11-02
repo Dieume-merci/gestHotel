@@ -55,7 +55,7 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#Clients" aria-expanded="false" aria-controls="Clients">
           <i class="typcn typcn-briefcase menu-icon"></i>
-          <span class="menu-title">{{__("Gestion des Clients")}}</span>
+          <span class="menu-title">{{__("Gestion des Reserv Cli.")}}</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="Clients">
@@ -83,7 +83,7 @@
       <div class="content-wrapper">
         <div class="row">
           <div class="col-sm-6">
-            <h3 class="mb-0 font-weight-bold">{{Auth::user()->nom}} {{Auth::user()->postenom}} {{Auth::user()->prenom}}</h3>
+            <h3 class="mb-0 font-weight-bold">{{Auth::user()->nom}} {{Auth::user()->postnom}} {{Auth::user()->prenom}}</h3>
             <p>{{__("Votre Derniere connexion:")}} {{date('d-m-Y à h:i:s')}} {{__("à Notre site.")}}</p>
           </div>
         </div>

@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-4">
-                        <img src="{{asset($reservation->Client->User->image) ?? ''}} " width="100%" height="100%" alt="">
+                        <img src="{{asset($images)}}" width="100%" height="100%" alt="">
                     </div>
                     <div class="col-lg-8">
                         <table class=" table table-sm">

@@ -53,7 +53,12 @@ final class ReservationTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Reservation::query();
+        if(auth()->user()->roles()->where('designation','admin')->exists()){
+            return Reservation::query();
+        }else {
+            return Reservation::query()->where("client_id",Auth::user()->Client->id);
+        } 
+       
     }
 
     /*

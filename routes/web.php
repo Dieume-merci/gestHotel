@@ -10,7 +10,7 @@ Route::group([
     'prefix' => 'HOTEL',
 ], function(){
     Route::get('Home', function () {
-    return view('home');
+        return view('home');
     });
     Route::resources([
         'type'=>TypeController::class,
@@ -33,4 +33,10 @@ Route::group([
         'client'=>ClientController::class,
         'commentaire'=>CommentaireController::class,
     ]);
+    Route::get('/account', function () {
+        return view('auth.account');
+    });
+    Route::get('/paiement', function () {
+        return view('components.paiement');
+    });
 });

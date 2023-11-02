@@ -13,6 +13,10 @@ class Users extends Component
     public  static function update($datas){
         $datas->save();
      }
+     public  static function updatephoto($datas){
+        $datas['image']='/storage/files/'.basename($datas['image']->store('/files/','public'));
+        $datas->save();
+     }
      public  static function destroy($datas){
         User::destroy($datas);
      }

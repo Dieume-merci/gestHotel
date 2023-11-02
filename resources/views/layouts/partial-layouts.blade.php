@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>WICOM-SA</title>
+    <title>BASILE LODGE | HOTEL|BOOKING</title>
     <link rel="stylesheet" href="{!! url('template/vendors/typicons.font/font/typicons.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/style.css') !!}">
     <link rel="stylesheet" href="{!! url('template/css/vertical-layout-light/sweetalert.css') !!}">

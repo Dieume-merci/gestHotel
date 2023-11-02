@@ -29,7 +29,7 @@ class CommandeRequest extends FormRequest
             'reservation.heure'=>['required'],
 
             'reservation.date_reservee'=>'required|date|after:now',
-            'reservation.email'=>'required|email',
+            // 'reservation.email'=>'required|email',
         ];
     }
 }

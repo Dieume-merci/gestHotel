@@ -2,11 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center">Faites UNe Reservation Maintenant</h4>
+                <h4 class="modal-title text-center">Faites Une Reservation Maintenant</h4>
                 <button class="close" data-dismiss="modal">X</button>
             </div>
             <div class="modal-body">
-                <form wire:submit.prevent="" class="form-group">
+                <form wire:submit.prevent="store" class="form-group">
                     @csrf
                     <div class="form-group">
                         <label class="">Date debut</label>

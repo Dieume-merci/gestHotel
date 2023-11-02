@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use \App\Models\Espace;
+use Livewire\Component;
 use Illuminate\Support\Carbon;
-use \App\Http\Requests\CommandeRequest;
 use Illuminate\Support\Facades\Auth;
+use \App\Http\Requests\CommandeRequest;
+use App\Http\Livewire\Controllers\Reservations;
 
 class Reservation extends Component
 {
@@ -29,10 +30,17 @@ class Reservation extends Component
             $this->space=$id;
             $this->reset("reservation");
             $this->dispatchBrowserEvent("openModal",['modal'=>'openModalReservation']);
-
         } else {
             $this->dispatchBrowserEvent("erreur",['message'=>"Connecter-Vous ou créer Un Compte Basile"]);
         }
+    }
+    public function store()
+    {
+        sleep(2);
+        $this->validate();
+        $this->reservation['espace_id']=$this->space->id;
+        Reservations::store($this->reservation);
+        return redirect()->to(url("HOTEL/paiement"));
     }
     public function render()
     {
