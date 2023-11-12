@@ -15,6 +15,7 @@ class IndexClient extends Component
         $this->reservation=$reservation;
         $this->images=$reservation->Client->User->image ;
         $this->dispatchBrowserEvent('openModal',['modal'=>'openModalView']);
+        $this->emit("refreshPowerGrid");
     }
     public function render()
     {

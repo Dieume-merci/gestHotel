@@ -30,6 +30,7 @@ class IndexEspace extends Component
             Espaces::store($this->espace);
             $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
             $this->reset("espace");
+            $this->emit("refreshPowerGrid");
         } catch (\Throwable $th) {
             $this->dispatchBrowserEvent("erreur",['message'=>"Ces Données Existaient deja"]);
         }
@@ -39,6 +40,7 @@ class IndexEspace extends Component
             espaces::destroy($espace->id);
             $this->dispatchBrowserEvent("success",['message'=>"Suppression Bien Faite"]);
             $this->reset("espace");
+            $this->emit("refreshPowerGrid");
         }else{
             $this->dispatchBrowserEvent("erreur",['message'=>"Impossible, Il ya Un Espace Qui est Affecté à ce Type"]);
         }
@@ -47,6 +49,7 @@ class IndexEspace extends Component
             espaces::update($this->espace);
             $this->dispatchBrowserEvent("success",['message'=>"Mise à jour Bien Faite",'modal'=>'modifier-type']);
             $this->reset('espace');
+            $this->emit("refreshPowerGrid");
     }
     public function Espaceedit(Espace $espace)
     {
@@ -57,6 +60,7 @@ class IndexEspace extends Component
     {
         $this->dispatchBrowserEvent('closeModal',['modal'=>'openModal']);
         $this->reset("espace");
+        $this->emit("refreshPowerGrid");
     }
     public function render()
     {

@@ -23,6 +23,7 @@ class ReservationFactory extends Factory
             "client_id"=>Client::factory(),
             "heure"=>$this->faker->randomDigit(),
             "date_reservee"=>$this->faker->date(),
+            "date_fin"=>$this->faker->date(),
             "montant"=>$this->faker->randomDigit()
         ];
     }

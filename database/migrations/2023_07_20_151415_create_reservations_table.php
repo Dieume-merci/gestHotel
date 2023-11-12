@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->string("heure");
             $table->date("date_reservee");
+            $table->date("date_fin")->nullable();
             $table->string("montant");
             $table->timestamps();
             $table->softDeletes();

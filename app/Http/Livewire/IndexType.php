@@ -25,11 +25,13 @@ class IndexType extends Component
         Types::store($this->type);
         $this->dispatchBrowserEvent("success",['message'=>"Enregistrement Effectué avec success",'modal'=>'openModal']);
         $this->reset("type");
+        $this->emit("refreshPowerGrid");
     }
     public function destroyType(Type $type){
         if(!count($type->Espaces)){
             Types::destroy($type->id);
             $this->dispatchBrowserEvent("success",['message'=>"Suppression Bien Faite"]);
+            $this->emit("refreshPowerGrid");
         }else{
             $this->dispatchBrowserEvent("erreur",['message'=>"Impossible, Il ya Un Espace Qui est Affecté à ce Type"]);
         }
@@ -38,6 +40,7 @@ class IndexType extends Component
             Types::update($this->type);
             $this->dispatchBrowserEvent("success",['message'=>"Suppression Bien Faite",'modal'=>'modifier-type']);
             $this->reset("type");
+            $this->emit("refreshPowerGrid");
     }
     public function editType(Type $type)
     {
@@ -48,6 +51,7 @@ class IndexType extends Component
     {
         $this->dispatchBrowserEvent('closeModal',['modal'=>'modifier-type']);
         $this->reset("type");
+        $this->emit("refreshPowerGrid");
     }
     public function render()
     {

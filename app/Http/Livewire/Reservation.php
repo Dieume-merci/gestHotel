@@ -21,7 +21,7 @@ class Reservation extends Component
     protected function updated($field){
         $heure = (!empty($this->reservation['heure'])) ? $this->reservation['heure'] : 0 ;
         $this->reservation['montant']=round($this->space->cout * $heure,2);
-        $this->fin=(!empty($this->reservation['date_reservee']) && !empty($this->reservation['heure'])) ? Carbon::parse($this->reservation['date_reservee'])->addHours($this->reservation['heure'])->format('D d/m/y à H:i') : 'The Last Date is not Defined';
+        $this->fin=(!empty($this->reservation['date_reservee']) && !empty($this->reservation['heure'])) ? Carbon::parse($this->reservation['date_reservee'])->addHours($this->reservation['heure'])->format('D d/m/Y à H:i') : 'The Last Date is not Defined';
         $this->validateOnly($field);
     }
     public function setreservation(Espace $id)
@@ -39,8 +39,17 @@ class Reservation extends Component
         sleep(2);
         $this->validate();
         $this->reservation['espace_id']=$this->space->id;
-        Reservations::store($this->reservation);
-        return redirect()->to(url("HOTEL/paiement"));
+        $date_fin=Carbon::parse($this->reservation['date_reservee'])->addHours($this->reservation['heure']);
+        $date_finv=Carbon::parse($this->reservation['date_reservee'])->addHours($this->reservation['heure'])->toArray();
+        $date_debutv=Carbon::parse($this->reservation['date_reservee'])->toArray();
+        $this->reservation['date_fin']=$date_fin;
+        $possibilite=Reservations::test($this->space->reservations,[$date_debutv["formatted"],$date_finv["formatted"]]);
+        if ($possibilite) {
+            Reservations::store($this->reservation);
+            return redirect()->to(url("HOTEL/paiement"));
+        } else {
+            $this->dispatchBrowserEvent("erreur",['message'=>"Cet Espace est deja Reservé"]);
+        }
     }
     public function render()
     {

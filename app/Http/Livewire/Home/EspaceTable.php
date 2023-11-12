@@ -15,7 +15,15 @@ final class EspaceTable extends PowerGridComponent
 {
     use ActionButton;
     use WithExport;
-
+    protected $listeners = ['refreshPowerGrid'=>'$refresh'];
+    protected function getListeners(): array
+    {
+        return array_merge(
+            parent::getListeners(),
+            [
+                'refreshPowerGrid' => '$refresh',
+            ]);
+    }
     /*
     |--------------------------------------------------------------------------
     |  Features Setup

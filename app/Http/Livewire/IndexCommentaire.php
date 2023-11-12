@@ -21,6 +21,7 @@ class IndexCommentaire extends Component
         $this->validate();
         Commentaires::store($this->commentaire);
         $this->dispatchBrowserEvent("success",['message'=>"Un Nouveau Commentaire est ajouté avec success",'modal'=>'openModalcommentaire']);  
+        $this->emit("refreshPowerGrid");
     }
     
     public function render()

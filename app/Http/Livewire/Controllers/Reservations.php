@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Controllers;
 
 use Livewire\Component;
 use App\Models\Reservation;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class Reservations extends Component
@@ -27,4 +28,7 @@ class Reservations extends Component
      public  static function destroy($datas){
         Reservation::destroy($datas);
      }
+     public static function test($datas,$date_toutes=array()){
+        return !boolval(count($datas->whereBetween('date_fin',$date_toutes)));
+    }
 }
